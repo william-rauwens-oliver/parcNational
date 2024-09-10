@@ -3,16 +3,15 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
+include 'fonctions.php';
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "parcNational";
+$conn = connectToDatabase($servername, $username, $password, $dbname);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("La connexion a échoué : " . $conn->connect_error);
-}
+$error_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
@@ -21,36 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mot_de_passe = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
     $confirm_mot_de_passe = isset($_POST['confirm_mot_de_passe']) ? $_POST['confirm_mot_de_passe'] : '';
 
-    if ($mot_de_passe !== $confirm_mot_de_passe) {
+    if (!checkPasswordsMatch($mot_de_passe, $confirm_mot_de_passe)) {
         $error_message = "Les mots de passe ne correspondent pas.";
+    } elseif (isEmailUsed($conn, $email)) {
+        $error_message = "L'adresse e-mail est déjà utilisée.";
     } else {
-        // Je vérifie si l'email est déjà utilisé
-        $email_check = $conn->prepare("SELECT COUNT(*) FROM Utilisateur WHERE email = ?");
-        $email_check->bind_param("s", $email);
-        $email_check->execute();
-        $email_check->bind_result($email_count);
-        $email_check->fetch();
-        $email_check->close();
-
-        if ($email_count > 0) {
-            $error_message = "L'adresse e-mail est déjà utilisée.";
+        $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+        if (registerUser($conn, $nom, $prenom, $email, $hashed_password)) {
+            header("Location: accueil.php");
+            exit();
         } else {
-            $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
-
-            // SQL
-            $sql = "INSERT INTO Utilisateur (nom, prenom, email, mot_de_passe, role) VALUES (?, ?, ?, ?, 'utilisateur')";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssss", $nom, $prenom, $email, $hashed_password);
-
-            if ($stmt->execute()) {
-                header("Location: accueil.php");
-                exit();
-            } else {
-                $error_message = "Erreur : " . $stmt->error;
-            }
+            $error_message = "Erreur : " . $conn->error;
         }
     }
-
     $conn->close();
 }
 ?>
@@ -71,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form method="POST" class="register__form">
         <h1 class="register__title">Inscription</h1>
 
-        <?php if (isset($error_message)): ?>
+        <?php if (!empty($error_message)): ?>
             <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
         <?php endif; ?>
      
