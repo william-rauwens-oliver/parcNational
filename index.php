@@ -44,26 +44,38 @@ try {
     <title>ParcNational</title>
   </head>
   <body>
-    <nav>
-      <div class="nav__header">
-        <div class="nav__logo">
-          <a href="#" class="logo">ParcNational</a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <i class="ri-menu-line"></i>
-        </div>
-      </div>
-      <ul class="nav__links" id="nav-links">
-        <li><a href="#home">ACCUEIL</a></li>
-        <li><a href="#about">NOS CALANQUES</a></li>
-        <li><a href="#tour">NOS CAMPINGS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a href="#">BOOK TRIP</a></li>
-      </ul>
-      <div class="nav__btns">
-        <button class="btn">VOYAGER</button>
-      </div>
-    </nav>
+  <nav>
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a href="#" class="logo">ParcNational</a>
+    </div>
+    <div class="nav__menu__btn" id="menu-btn">
+      <i class="ri-menu-line"></i>
+    </div>
+  </div>
+  <ul class="nav__links" id="nav-links">
+    <li><a href="#home">ACCUEIL</a></li>
+    <li><a href="#about">NOS CALANQUES</a></li>
+    <li><a href="#tour">NOS CAMPINGS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+    <li><a href="#">BOOK TRIP</a></li>
+  </ul>
+  <div class="nav__btns">
+    <button class="btn">VOYAGER</button>
+    <div class="nav__icons">
+      <!-- icône de notifications -->
+      <a href="#" class="nav__icon">
+        <i class="ri-notification-2-line"></i>
+        <span class="notification-badge">3</span>
+      </a>
+      <!-- icône de connexion -->
+      <a href="#" class="nav__icon">
+        <i class="ri-user-line"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
 
     <header id="home">
       <div class="header__container">
