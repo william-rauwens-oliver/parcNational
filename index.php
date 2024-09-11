@@ -459,7 +459,7 @@ try {
         </div>
       </div>
       <div class="footer__bar">
-        Copyright © 2024 La Plateforme William / Chaima / Julian. All rights reserved.
+        Copyright © 2024 La Plateforme B2 Web, William / Chaima / Julian. All rights reserved.
       </div>
     </footer>
 
