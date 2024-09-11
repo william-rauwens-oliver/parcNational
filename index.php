@@ -118,7 +118,7 @@ try {
     <?php if (!empty($sentiers)): ?>
       <?php foreach ($sentiers as $sentier): ?>
         <div class="destination__card">
-          
+
           <img src="<?php echo htmlspecialchars($sentier['image']); ?>" alt="trail" />
           <div class="destination__card__details">
             <div>

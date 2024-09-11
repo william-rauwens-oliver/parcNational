@@ -234,9 +234,8 @@ nav {
   overflow-y: auto;
 }
 
-/* Style de la modale */
 .modal {
-  display: none; /* Cacher la modale par défaut */
+  display: none; 
   position: fixed;
   z-index: 1;
   left: 0;
@@ -248,7 +247,12 @@ nav {
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Contenu de la modale */
+.modal-content iframe {
+  width: 100%;
+  height: calc(100vh - 40px);
+  border: none;
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -258,7 +262,6 @@ nav {
   position: relative;
 }
 
-/* Bouton de fermeture */
 .close {
   color: #aaa;
   float: right;
