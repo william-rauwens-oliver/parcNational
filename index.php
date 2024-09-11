@@ -63,12 +63,10 @@ try {
     <div class="nav__btns">
       <button class="btn">VOYAGER</button>
       <div class="nav__icons">
-        <!-- icône de notifications -->
         <a href="#" class="nav__icon" id="notification-icon">
           <i class="ri-notification-2-line"></i>
           <span class="notification-badge">3</span>
         </a>
-        <!-- icône de connexion -->
         <a href="login.php" class="nav__icon">
           <i class="ri-user-line"></i>
         </a>
@@ -76,14 +74,12 @@ try {
     </div>
   </nav>
 
-  <!-- Fenêtre modale de notifications -->
   <div class="notification-modal" id="notification-modal">
     <div class="notification-modal__header">
       <h2>Notifications</h2>
       <button class="close-btn" id="close-btn">&times;</button>
     </div>
     <div class="notification-modal__content" id="notification-content">
-      <!-- Les notifications seront chargées ici -->
     </div>
   </div>
 
@@ -105,7 +101,6 @@ try {
   </div>
 </header>
 
-<!-- Modale -->
 <div id="videoModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -123,7 +118,7 @@ try {
     <?php if (!empty($sentiers)): ?>
       <?php foreach ($sentiers as $sentier): ?>
         <div class="destination__card">
-          <!-- Affichage de l'image du sentier -->
+          
           <img src="<?php echo htmlspecialchars($sentier['image']); ?>" alt="trail" />
           <div class="destination__card__details">
             <div>
