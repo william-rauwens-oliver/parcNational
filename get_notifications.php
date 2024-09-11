@@ -1,5 +1,4 @@
 <?php
-// get_notifications.php
 
 header('Content-Type: application/json');
 
@@ -12,7 +11,7 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT titre, message, date_envoi FROM Notification WHERE id_utilisateur IS NULL"; // Modifiez la condition selon vos besoins
+    $sql = "SELECT titre, message, date_envoi FROM Notification WHERE id_utilisateur IS NULL";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
