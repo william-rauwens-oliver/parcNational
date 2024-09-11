@@ -87,23 +87,32 @@ try {
     </div>
   </div>
 
-    <header id="home">
-      <div class="header__container">
-        <div class="header__content">
-          <p>Vous voici dans votre magnifique Parc.</p>
-          <h1>Votre Expérience de notre Parc des calanques</h1>
-          <div class="header__btns">
-            <button class="btn">Réservez dès maintenant !</button>
-            <a href="#">
-              <span><i class="ri-play-circle-fill"></i></span>
-            </a>
-          </div>
-        </div>
-        <div class="header__image">
-          <img src="assets/header.png" alt="header" />
-        </div>
+  <header id="home">
+  <div class="header__container">
+    <div class="header__content">
+      <p>Vous voici dans votre magnifique Parc.</p>
+      <h1>Votre Expérience de notre Parc des calanques</h1>
+      <div class="header__btns">
+        <button class="btn">Réservez dès maintenant !</button>
+        <a href="#" id="openModal">
+          <span><i class="ri-play-circle-fill"></i></span>
+        </a>
       </div>
-    </header>
+    </div>
+    <div class="header__image">
+      <img src="assets/header.png" alt="header" />
+    </div>
+  </div>
+</header>
+
+<!-- Modale -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
 
     <section class="section__container destination__container" id="about">
   <h2 class="section__header">Nos sentiers</h2>

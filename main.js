@@ -1,6 +1,3 @@
-// script.js
-
-// Gestion de la fenêtre modale de notifications
 document.addEventListener('DOMContentLoaded', () => {
   const notificationIcon = document.querySelector('.nav__icon');
   const notificationModal = document.getElementById('notification-modal');
@@ -18,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchNotifications() {
     try {
-      const response = await fetch('get_notifications.php'); // URL du script PHP pour obtenir les notifications
+      const response = await fetch('get_notifications.php');
       const notifications = await response.json();
       displayNotifications(notifications);
     } catch (error) {
@@ -27,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function displayNotifications(notifications) {
-    notificationContent.innerHTML = ''; // Réinitialiser le contenu
+    notificationContent.innerHTML = '';
     notifications.forEach(notification => {
       const notificationElement = document.createElement('div');
       notificationElement.className = 'notification-item';
@@ -39,9 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
       notificationContent.appendChild(notificationElement);
     });
   }
+
+  const videoModal = document.getElementById('videoModal');
+  const openVideoBtn = document.getElementById('openModal');
+  const closeVideoBtn = videoModal.querySelector('.close');
+  const videoFrame = document.getElementById('videoFrame');
+
+  openVideoBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    videoModal.style.display = 'block';
+    videoFrame.src = 'https://www.youtube.com/embed/5mG-_0YIRac?si=vbsJYYTgZvczJLKE'; // Remplacez l'URL par celle de votre vidéo
+  });
+
+  closeVideoBtn.addEventListener('click', () => {
+    videoModal.style.display = 'none';
+    videoFrame.src = '';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === videoModal) {
+      videoModal.style.display = 'none';
+      videoFrame.src = ''; 
+    }
+  });
 });
 
-// Gestion du menu mobile
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
@@ -58,7 +77,6 @@ navLinks.addEventListener("click", () => {
   menuBtnIcon.setAttribute("class", "ri-menu-line");
 });
 
-// Animation de défilement avec ScrollReveal
 const scrollRevealOption = {
   origin: "bottom",
   distance: "50px",
@@ -114,7 +132,6 @@ ScrollReveal().reveal(".discover__card", {
   interval: 500,
 });
 
-// Initialisation de Swiper
 const swiper = new Swiper(".swiper", {
   slidesPerView: 3,
   spaceBetween: 20,
