@@ -402,12 +402,12 @@ try {
       <div class="section__container footer__container">
         <div class="footer__col">
           <div class="footer__logo">
-            <a href="#" class="logo">Skywings</a>
+            <a href="#" class="logo">parcNational</a>
           </div>
           <p>
-            Explore the world with ease and excitement through our comprehensive
-            travel platform. Your journey begins here, where seamless planning
-            meets unforgettable experiences.
+          Explorez notre parc avec facilité et enthousiasme grâce à 
+          notre plateforme de représentation du parc complète. Votre voyage commence ici, 
+          où une planification fluide rencontre des expériences inoubliables.
           </p>
           <ul class="footer__socials">
             <li>
@@ -422,12 +422,12 @@ try {
           </ul>
         </div>
         <div class="footer__col">
-          <h4>Quick Links</h4>
+          <h4>Liens Rapide</h4>
           <ul class="footer__links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Flights</a></li>
-            <li><a href="#">Hotels</a></li>
-            <li><a href="#">Cruise</a></li>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Nos calanques</a></li>
+            <li><a href="#">Nos campings</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -435,31 +435,31 @@ try {
           <ul class="footer__links">
             <li>
               <a href="#">
-                <span><i class="ri-phone-fill"></i></span> +91 9876543210
+                <span><i class="ri-phone-fill"></i></span> 04 84 89 43 69
               </a>
             </li>
             <li>
               <a href="#">
-                <span><i class="ri-record-mail-line"></i></span> info@skywings
+                <span><i class="ri-record-mail-line"></i></span> William Chaima Julian
               </a>
             </li>
             <li>
               <a href="#">
-                <span><i class="ri-map-pin-2-fill"></i></span> New Delhi, India
+                <span><i class="ri-map-pin-2-fill"></i></span> Marseille, France
               </a>
             </li>
           </ul>
         </div>
         <div class="footer__col">
-          <h4>Subscribe</h4>
+          <h4>S'abonner</h4>
           <form action="/">
-            <input type="text" placeholder="Enter your email" />
-            <button class="btn">Subscribe</button>
+            <input type="text" placeholder="Entrez votre email" />
+            <button class="btn">S'abonner</button>
           </form>
         </div>
       </div>
       <div class="footer__bar">
-        Copyright © 2024 Web Design Mastery. All rights reserved.
+        Copyright © 2024 La Plateforme William / Chaima / Julian. All rights reserved.
       </div>
     </footer>
 
