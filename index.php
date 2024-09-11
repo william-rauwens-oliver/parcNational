@@ -29,53 +29,63 @@ try {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>ParcNational</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <title>ParcNational</title>
+</head>
+<body>
   <nav>
-  <div class="nav__header">
-    <div class="nav__logo">
-      <a href="#" class="logo">ParcNational</a>
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="#" class="logo">ParcNational</a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-line"></i>
+      </div>
     </div>
-    <div class="nav__menu__btn" id="menu-btn">
-      <i class="ri-menu-line"></i>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#home">ACCUEIL</a></li>
+      <li><a href="#about">NOS CALANQUES</a></li>
+      <li><a href="#tour">NOS CAMPINGS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#">BOOK TRIP</a></li>
+    </ul>
+    <div class="nav__btns">
+      <button class="btn">VOYAGER</button>
+      <div class="nav__icons">
+        <!-- icône de notifications -->
+        <a href="#" class="nav__icon" id="notification-icon">
+          <i class="ri-notification-2-line"></i>
+          <span class="notification-badge">3</span>
+        </a>
+        <!-- icône de connexion -->
+        <a href="login.php" class="nav__icon">
+          <i class="ri-user-line"></i>
+        </a>
+      </div>
     </div>
-  </div>
-  <ul class="nav__links" id="nav-links">
-    <li><a href="#home">ACCUEIL</a></li>
-    <li><a href="#about">NOS CALANQUES</a></li>
-    <li><a href="#tour">NOS CAMPINGS</a></li>
-    <li><a href="#contact">CONTACT</a></li>
-    <li><a href="#">BOOK TRIP</a></li>
-  </ul>
-  <div class="nav__btns">
-    <button class="btn">VOYAGER</button>
-    <div class="nav__icons">
-      <!-- icône de notifications -->
-      <a href="#" class="nav__icon">
-        <i class="ri-notification-2-line"></i>
-        <span class="notification-badge">3</span>
-      </a>
-      <!-- icône de connexion -->
-      <a href="#" class="nav__icon">
-        <i class="ri-user-line"></i>
-      </a>
-    </div>
-  </div>
-</nav>
+  </nav>
 
+  <!-- Fenêtre modale de notifications -->
+  <div class="notification-modal" id="notification-modal">
+    <div class="notification-modal__header">
+      <h2>Notifications</h2>
+      <button class="close-btn" id="close-btn">&times;</button>
+    </div>
+    <div class="notification-modal__content" id="notification-content">
+      <!-- Les notifications seront chargées ici -->
+    </div>
+  </div>
 
     <header id="home">
       <div class="header__container">
