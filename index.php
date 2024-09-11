@@ -431,7 +431,7 @@ try {
           </ul>
         </div>
         <div class="footer__col">
-          <h4>Contact Us</h4>
+          <h4>Contact nous</h4>
           <ul class="footer__links">
             <li>
               <a href="#">
