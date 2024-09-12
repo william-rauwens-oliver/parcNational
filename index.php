@@ -55,7 +55,7 @@ try {
     </div>
     <ul class="nav__links" id="nav-links">
       <li><a href="#home">ACCUEIL</a></li>
-      <li><a href="#about">NOS CALANQUES</a></li>
+      <li><a href="#about">NOS SENTIERS</a></li>
       <li><a href="#tour">NOS CAMPINGS</a></li>
       <li><a href="#contact">CONTACT</a></li>
       <li><a href="#">BOOK TRIP</a></li>
