@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-// Connexion à la base de données
 $host = 'localhost';
 $dbname = 'parcNational';
-$username = 'root';  // Adapter si nécessaire
-$password = 'root';  // Adapter si nécessaire
+$username = 'root';
+$password = 'root';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -14,11 +13,9 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-// Gestion des utilisateurs
 $stmt = $pdo->query("SELECT * FROM Utilisateur");
 $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Gestion des sentiers
 $stmt = $pdo->query("SELECT * FROM Sentier");
 $sentiers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
