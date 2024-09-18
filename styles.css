@@ -276,6 +276,80 @@ nav {
   cursor: pointer;
 }
 
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; 
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #e0e0e0; 
+}
+
+
+h2 {
+  color: #1d1d1f; 
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600; 
+}
+
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d1d6; 
+  border-radius: 8px;
+  background-color: #f9f9f9; 
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  border-color: #0071e3;
+  outline: none;
+}
+
+
+button {
+  background-color: #0071e3; 
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  /* width: 100%; */
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5; 
+}
+
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9; 
+  border: 1px solid #e0e0e0; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
 
 header {
   margin-top: 5rem;
