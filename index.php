@@ -182,52 +182,53 @@ try {
   </div>
 
     <section class="section__container journey__container" id="tour">
-      <h2 class="section__header">Journey To The Sky Made Simple!</h2>
+      <h2 class="section__header">Tes vacances à porté de mains !</h2>
       <p class="section__description">
-        Effortless Planning for Your Next Adventure
+        Prend rendez-vous dès maintenant pour tes vacances de rêve !
       </p>
       <div class="journey__grid">
         <div class="journey__card">
           <div class="journey__card__bg">
             <span><i class="ri-bookmark-3-line"></i></span>
-            <h4>Seamless Booking Process</h4>
+            <h4>Processus de réservation fluide</h4>
           </div>
           <div class="journey__card__content">
             <span><i class="ri-bookmark-3-line"></i></span>
-            <h4>Easy Reservations, One Click Away</h4>
+            <h4>Réservations faciles, en un seul clic</h4>
             <p>
-              From flights and accommodations to activities and transfers,
-              everything you need is available at your fingertips, making travel
-              planning effortless.
+            Des campings et calanques aux activités extraordinaire tout 
+            ce dont vous avez besoin est à portée de main, ce qui facilite 
+            votre voyage, planifier dès maintenant !
             </p>
           </div>
         </div>
         <div class="journey__card">
           <div class="journey__card__bg">
             <span><i class="ri-landscape-fill"></i></span>
-            <h4>Tailored Itineraries</h4>
+            <h4>Itinéraires sur mesure</h4>
           </div>
           <div class="journey__card__content">
             <span><i class="ri-landscape-fill"></i></span>
-            <h4>Customized Plans Just for You</h4>
+            <h4>Des forfaits personnalisés rien que pour vous</h4>
             <p>
-              Enjoy personalized travel plans designed to match your preferences
-              and interests. Whether you seek adventure or cultural immersion,
-              our tailored itineraries ensure your journey is uniquely yours.
+            Profitez de plans de campigns personnalisés conçus pour 
+            correspondre à vos préférences et intérêts. Que vous recherchiez 
+            l'aventure ou l'immersion culturelle.
             </p>
           </div>
         </div>
         <div class="journey__card">
           <div class="journey__card__bg">
             <span><i class="ri-map-2-line"></i></span>
-            <h4>Expert Local Insights</h4>
+            <h4>Informations locales d'experts</h4>
           </div>
           <div class="journey__card__content">
             <span><i class="ri-map-2-line"></i></span>
-            <h4>Insider Tips and Recommendations</h4>
+            <h4>Conseils et recommandations d’initiés</h4>
             <p>
-              We provide curated recommendations for dining, sightseeing, and
-              hidden gems, so you can experience each destination like a local.
+            Nous fournissons des recommandations organisées pour les restaurants, 
+            les visites touristiques pour que vous puissiez découvrir chaque 
+            destination.
             </p>
           </div>
         </div>
@@ -239,29 +240,31 @@ try {
         <img src="assets/showcase.jpg" alt="showcase" />
       </div>
       <div class="showcase__content">
-        <h4>UNLEASH WANDERLUST WITH SKYWINGS</h4>
+        <h4>LIBÉREZ L'ENVIE DE VOYAGER</h4>
         <p>
-          Embark on a journey like no other with Skywings, where your travel
-          dreams come to life. Our mission is to inspire and facilitate your
-          adventures, whether you seek the vibrant energy of bustling
-          cityscapes, the serene beauty of pristine beaches, or the captivating
-          history of ancient landmarks. At Skywings, we provide expertly curated
-          destinations and personalized itineraries, ensuring that every trip is
-          tailored to your unique preferences. Discover hidden gems, immerse
-          yourself in diverse cultures, and create unforgettable memories that
-          will last a lifetime.
+        Partez pour une aventure inoubliable avec nos parcs, 
+        où vos rêves de nature prennent vie. Notre mission est de vous 
+        inspirer et de faciliter vos escapades, que vous recherchiez 
+        l'énergie vibrante des campings animés, la beauté sereine des calanques 
+        préservées, ou la découverte fascinante des paysages enchâssés dans 
+        l'histoire. Chez nous, nous proposons des destinations soigneusement 
+        sélectionnées et des itinéraires personnalisés, garantissant que chaque 
+        séjour est adapté à vos préférences uniques. Découvrez des trésors cachés, 
+        immergez-vous dans des paysages variés, et créez des souvenirs inoubliables 
+        qui dureront toute une vie.
         </p>
         <p>
-          With Skywings as your ultimate travel companion, exploring the wonders
-          of the world has never been easier. Our insider tips and local
-          insights give you the tools to navigate new places with confidence and
-          excitement. From the moment you start planning to the day you return
-          home, we are dedicated to making your travel experience seamless and
-          enriching.
+        Avec nous, votre compagnon de voyage idéal, explorer les merveilles 
+        de la nature n’a jamais été aussi simple. Nos conseils d'experts et 
+        nos connaissances locales vous offrent les outils nécessaires pour 
+        découvrir de nouveaux horizons avec assurance et enthousiasme. 
+        Du moment où vous commencez à planifier jusqu'au jour de votre retour, 
+        nous sommes engagés à rendre votre expérience en camping fluide et 
+        enrichissante.
         </p>
         <div class="showcase__btn">
           <button class="btn">
-            Book A Flight Now
+            Réserve maintenant sans attendre
             <span><i class="ri-arrow-right-line"></i></span>
           </button>
         </div>
@@ -271,56 +274,56 @@ try {
     <section class="section__container banner__container">
       <div class="banner__card">
         <h4>10+</h4>
-        <p>Years Experience</p>
+        <p>D'années d'expérience</p>
       </div>
       <div class="banner__card">
         <h4>12K</h4>
-        <p>Happy Clients</p>
+        <p>Client content en réservant chez nous</p>
       </div>
       <div class="banner__card">
         <h4>4.8</h4>
-        <p>Overall Ratings</p>
+        <p>Notes globales</p>
       </div>
     </section>
 
     <section class="section__container discover__container">
-      <h2 class="section__header">Discover The World From Above</h2>
+      <h2 class="section__header">Découvrez le monde vu d'en haut</h2>
       <p class="section__description">
-        Experience Breathtaking Views and Unique Perspectives
+      Découvrez des vues à couper le souffle et des perspectives uniques
       </p>
       <div class="discover__grid">
         <div class="discover__card">
           <span><i class="ri-camera-lens-line"></i></span>
-          <h4>Aerial Cityscapes</h4>
+          <h4>Paysages naturel</h4>
           <p>
-            Witness the architectural marvels and bustling streets from
-            bird's-eye view, offering a unique perspective.
+          Soyez témoin des merveilles architecturales et des rues animées de
+          vue plongeante, offrant une perspective unique.
           </p>
         </div>
         <div class="discover__card">
           <span><i class="ri-ship-line"></i></span>
-          <h4>Coastal Wonders</h4>
+          <h4>Merveilles côtières</h4>
           <p>
-            Fly over pristine coastlines and turquoise waters, revealing hidden
-            coves and vibrant coral reefs.
+          Survolez des côtes immaculées et des eaux turquoise pour découvrir des trésors cachés.
+          criques et récifs coralliens vibrants.
           </p>
         </div>
         <div class="discover__card">
           <span><i class="ri-landscape-line"></i></span>
-          <h4>Historic Landmarks</h4>
+          <h4>Monuments historiques</h4>
           <p>
-            Observe the grandeur of ancient castles and other significant sites
-            in a way that ground tours can't offer.
+          Observez la grandeur des architectures et d'autres sites importants
+          d'une manière dont vous n'en avez jamais vue.
           </p>
         </div>
       </div>
     </section>
 
     <section class="section__container client__container">
-      <h2 class="section__header">Loved By Over Thousand Travelers</h2>
+      <h2 class="section__header">Apprécié par plus de milliers de voyageurs</h2>
       <p class="section__description">
-        Discover the stories of wanderlust and cherished memories through the
-        eyes of our valued clients.
+      Découvrez les histoires d'envie de voyager et de souvenirs précieux à travers le
+      yeux de nos précieux clients.
       </p>
       <!-- Slider main container -->
       <div class="swiper">
@@ -338,18 +341,17 @@ try {
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  Skywings has completely transformed my travel experience. From
-                  finding hidden gems in bustling cities to discovering serene
-                  retreats off the beaten path, every detail was thoughtfully
-                  arranged. I can't recommend Skywings enough for anyone looking
-                  to elevate their travel experience!
+                Vous avez complètement transformé mon expérience de voyage. Depuis
+                  trouver des trésors cachés dans des villes animées pour découvrir sereinement
+                  se retire hors des sentiers battus, chaque détail a été soigneusement pensé
+                  arrangé. Je recommande leur expérience de voyage !
                 </p>
               </div>
               <div class="client__details">
                 <img src="assets/client-1.jpg" alt="client" />
                 <div>
                   <h4>John Adams</h4>
-                  <h5>Travel Blogger</h5>
+                  <h5>Blogueur de voyage</h5>
                 </div>
               </div>
             </div>
@@ -365,18 +367,18 @@ try {
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  My recent adventure with Skywings was nothing short of
-                  spectacular. The personalized itineraries and recommendations
-                  they provided led me to extraordinary locations that I would
-                  never have found on my own. I'm already planning my next
-                  adventure with them!
+                Ma récente aventure avec vous n'était rien de moins
+                  spectaculaire. Les itinéraires et recommandations personnalisés
+                  ils m'ont fourni des endroits extraordinaires que je voudrais
+                  je n'ai jamais trouvé par moi-même. Je prépare déjà mon prochain
+                  aventure avec eux!
                 </p>
               </div>
               <div class="client__details">
                 <img src="assets/client-2.jpg" alt="client" />
                 <div>
                   <h4>Emily Thompson</h4>
-                  <h5>Adventure Enthusiast</h5>
+                  <h5>Passionné d'aventure</h5>
                 </div>
               </div>
             </div>
@@ -392,18 +394,17 @@ try {
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  Skywings offered a transformative experience for my research
-                  into historical landmarks. The unique aerial perspectives and
-                  provided a new level of appreciation and insight into the
-                  sites I studied. I highly recommend their services to fellow
-                  historians and cultural enthusiasts.
+                Vous avez offert une expérience transformatrice pour mes recherches
+                  en monuments historiques.Je recommande fortement leurs services à mes collègues
+                  historiens et passionnés de culture. Merci beaucoup pour cette expérience inoubliable.
+                  Je reviendrais l'année prochaine.
                 </p>
               </div>
               <div class="client__details">
                 <img src="assets/client-3.jpg" alt="client" />
                 <div>
                   <h4>Sarah Lee</h4>
-                  <h5>Cultural Historian</h5>
+                  <h5>Historienne culturel</h5>
                 </div>
               </div>
             </div>
@@ -419,18 +420,17 @@ try {
                   <span><i class="ri-star-fill"></i></span>
                 </div>
                 <p>
-                  Finding a balance between work and travel can be challenging,
-                  but Skywings made it effortless. Their efficient planning and
-                  excellent recommendations helped me maximize my downtime and
-                  enjoy every moment of my trip. I look forward to working with
-                  them again on future travels.
+                Trouver un équilibre entre travail et voyage peut être difficile,
+                  mais vous l'avait fait sans effort. Leur planification efficace et
+                  d'excellentes recommandations m'ont aidé à maximiser mes temps d'arrêt et
+                  profitez de chaque instant de mon voyage.
                 </p>
               </div>
               <div class="client__details">
                 <img src="assets/client-4.jpg" alt="client" />
                 <div>
                   <h4>David Patel</h4>
-                  <h5>Business Executive</h5>
+                  <h5>Dirigeant d'entreprise</h5>
                 </div>
               </div>
             </div>
@@ -443,7 +443,7 @@ try {
       <div class="section__container footer__container">
         <div class="footer__col">
           <div class="footer__logo">
-            <a href="#" class="logo">parcNational</a>
+            <a href="#" class="logo">ParcNational</a>
           </div>
           <p>
           Explorez notre parc avec facilité et enthousiasme grâce à 
