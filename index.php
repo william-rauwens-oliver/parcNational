@@ -481,7 +481,7 @@ try {
             </li>
             <li>
               <a href="#">
-                <span><i class="ri-record-mail-line"></i></span> William Chaima Julian
+                <span><i class="ri-record-mail-line"></i></span> Chaima William Julian
               </a>
             </li>
             <li>
@@ -500,7 +500,7 @@ try {
         </div>
       </div>
       <div class="footer__bar">
-        Copyright © 2024 La Plateforme B2 Web, William / Chaima / Julian. Tout droit réservé.
+        Copyright © 2024 La Plateforme B2 Web, Chaima / William / Julian. Tout droit réservé.
       </div>
     </footer>
 
