@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Supposons que lorsque l'utilisateur se connecte, son prénom soit stocké dans une session, par exemple:
+// $_SESSION['prenom'] = "John";
+
+$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
+?>
+
 
 
 
@@ -36,18 +45,28 @@
       <li><a href="#">BOOK TRIP</a></li>
     </ul>
     <div class="nav__btns">
-      <button class="btn">VOYAGER</button>
-      <div class="nav__icons">
-        <a href="#" class="nav__icon" id="notification-icon">
-          <i class="ri-notification-2-line"></i>
-          <span class="notification-badge">3</span>
-        </a>
+    <button class="btn">VOYAGER</button>
+    <div class="nav__icons">
+      <a href="#" class="nav__icon" id="notification-icon">
+        <i class="ri-notification-2-line"></i>
+        <span class="notification-badge">3</span>
+      </a>
+
+      <?php if ($prenom): ?>
+        <div class="dropdown">
+          <span class="nav__user-name"><?php echo htmlspecialchars($prenom); ?></span>
+          <div class="dropdown-content">
+            <a href="logout.php" class="nav__logout">Déconnexion</a>
+          </div>
+        </div>
+      <?php else: ?>
         <a href="SignIn.php" class="nav__icon">
           <i class="ri-user-line"></i>
         </a>
-      </div>
+      <?php endif; ?>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <div class="notification-modal" id="notification-modal">
     <div class="notification-modal__header">
