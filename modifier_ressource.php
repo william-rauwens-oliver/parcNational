@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
-    header('Location: SignIn.php');
-    exit();
-}
-
 $host = 'localhost';
 $dbname = 'parcNational';
 $username = 'root';
@@ -19,31 +12,30 @@ try {
 }
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id_ressource = $_GET['id'];
 
-    $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE id_utilisateur = ?");
-    $stmt->execute([$id]);
-    $utilisateur = $stmt->fetch();
+    $stmt = $pdo->prepare("SELECT * FROM Ressource_Naturelle WHERE id_ressource = :id");
+    $stmt->execute([':id' => $id_ressource]);
+    $ressource = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$utilisateur) {
-        die("Utilisateur non trouvé.");
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $type = $_POST['type'];
         $nom = $_POST['nom'];
-        $email = $_POST['email'];
-        $role = $_POST['role'];
+        $description = $_POST['description'];
+        $quantite = $_POST['quantite'];
 
-        $stmt = $pdo->prepare("UPDATE Utilisateur SET nom = ?, email = ?, role = ? WHERE id_utilisateur = ?");
-        if ($stmt->execute([$nom, $email, $role, $id])) {
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "Erreur lors de la mise à jour.";
-        }
+        $stmt = $pdo->prepare("UPDATE Ressource_Naturelle SET type = :type, nom = :nom, description = :description, quantite = :quantite WHERE id_ressource = :id");
+        $stmt->execute([
+            ':type' => $type,
+            ':nom' => $nom,
+            ':description' => $description,
+            ':quantite' => $quantite,
+            ':id' => $id_ressource
+        ]);
+
+        header("Location: dashboard.php");
+        exit;
     }
-} else {
-    die("ID utilisateur manquant.");
 }
 ?>
 
@@ -52,7 +44,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier utilisateur</title>
+    <title>Modifier Ressource</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,7 +70,7 @@ if (isset($_GET['id'])) {
             margin-bottom: 8px;
             font-weight: bold;
         }
-        input, select {
+        input, textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -86,7 +78,7 @@ if (isset($_GET['id'])) {
             border-radius: 4px;
             box-sizing: border-box;
         }
-        input[type="submit"] {
+        button {
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -95,27 +87,27 @@ if (isset($_GET['id'])) {
             cursor: pointer;
             font-size: 16px;
         }
-        input[type="submit"]:hover {
+        button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>Modifier utilisateur</h1>
-    <form method="post">
+    <h1>Modifier Ressource</h1>
+    <form action="" method="POST">
+        <label for="type">Type :</label>
+        <input type="text" id="type" name="type" value="<?= htmlspecialchars($ressource['type']); ?>" required>
+
         <label for="nom">Nom :</label>
-        <input type="text" name="nom" value="<?= htmlspecialchars($utilisateur['nom']); ?>" required>
+        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($ressource['nom']); ?>" required>
 
-        <label for="email">Email :</label>
-        <input type="email" name="email" value="<?= htmlspecialchars($utilisateur['email']); ?>" required>
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" required><?= htmlspecialchars($ressource['description']); ?></textarea>
 
-        <label for="role">Rôle :</label>
-        <select name="role">
-            <option value="admin" <?= $utilisateur['role'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
-            <option value="visiteur" <?= $utilisateur['role'] == 'visiteur' ? 'selected' : ''; ?>>Visiteur</option>
-        </select>
+        <label for="quantite">Quantité :</label>
+        <input type="number" id="quantite" name="quantite" value="<?= htmlspecialchars($ressource['quantite']); ?>" required>
 
-        <input type="submit" value="Modifier">
+        <button type="submit">Enregistrer</button>
     </form>
 </body>
 </html>
