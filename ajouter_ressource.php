@@ -13,23 +13,26 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-// Vérification que les données ont été envoyées
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $type = $_POST['type'];
     $nom = $_POST['nom'];
     $description = $_POST['description'];
-    $quantite = $_POST['quantite'];
+    $localisation = $_POST['localisation'];
+    $date_observation = $_POST['date_observation'];
+    $etat = $_POST['etat'];
 
-    // Préparation et exécution de la requête SQL
-    $stmt = $pdo->prepare("INSERT INTO RessourceNaturelle (type, nom, description, quantite) VALUES (:type, :nom, :description, :quantite)");
+    $stmt = $pdo->prepare("INSERT INTO Ressource_Naturelle (type, nom, description, localisation, date_observation, etat) 
+                           VALUES (:type, :nom, :description, :localisation, :date_observation, :etat)");
     $stmt->execute([
         ':type' => $type,
         ':nom' => $nom,
         ':description' => $description,
-        ':quantite' => $quantite
+        ':localisation' => $localisation,
+        ':date_observation' => $date_observation,
+        ':etat' => $etat
     ]);
 
-    header("Location: dashboard.php"); // Redirection vers le tableau de bord après ajout
+    header("Location: dashboard.php");
     exit;
 }
 ?>

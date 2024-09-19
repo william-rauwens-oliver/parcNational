@@ -229,20 +229,26 @@ $ressources = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <section id="add-resource" class="section">
         <h2 class="section__title">Ajouter une Nouvelle Ressource Naturelle</h2>
         <form action="ajouter_ressource.php" method="POST" class="form">
-            <label for="type">Type :</label>
-            <input type="text" id="type" name="type" required>
-            
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
-            
-            <label for="description">Description :</label>
-            <textarea id="description" name="description" required></textarea>
-            
-            <label for="quantite">Quantité :</label>
-            <input type="number" id="quantite" name="quantite" step="1" required>
-            
-            <button type="submit" class="btn">Ajouter Ressource</button>
-        </form>
+    <label for="type">Type :</label>
+    <input type="text" id="type" name="type" required>
+
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="localisation">Localisation :</label>
+    <input type="text" id="localisation" name="localisation" required>
+
+    <label for="date_observation">Date d'observation :</label>
+    <input type="date" id="date_observation" name="date_observation" required>
+
+    <label for="etat">État :</label>
+    <input type="text" id="etat" name="etat" required>
+
+    <button type="submit" class="btn">Ajouter Ressource</button>
+</form>
     </section>
 </main>
 

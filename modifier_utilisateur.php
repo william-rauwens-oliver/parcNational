@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté et est un admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header('Location: SignIn.php');
     exit();
 }
 
-// Connexion à la base de données
 $host = 'localhost';
 $dbname = 'parcNational';
 $username = 'root';
@@ -23,7 +21,6 @@ try {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Récupérer les informations de l'utilisateur
     $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE id_utilisateur = ?");
     $stmt->execute([$id]);
     $utilisateur = $stmt->fetch();
@@ -32,13 +29,11 @@ if (isset($_GET['id'])) {
         die("Utilisateur non trouvé.");
     }
 
-    // Si le formulaire est soumis
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nom = $_POST['nom'];
         $email = $_POST['email'];
         $role = $_POST['role'];
 
-        // Mise à jour des informations de l'utilisateur
         $stmt = $pdo->prepare("UPDATE Utilisateur SET nom = ?, email = ?, role = ? WHERE id_utilisateur = ?");
         if ($stmt->execute([$nom, $email, $role, $id])) {
             header("Location: dashboard.php");

@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté et est un admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header('Location: SignIn.php');
     exit();
 }
 
-// Connexion à la base de données
 $host = 'localhost';
 $dbname = 'parcNational';
 $username = 'root';
@@ -23,7 +21,6 @@ try {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Suppression de l'utilisateur
     $stmt = $pdo->prepare("DELETE FROM Utilisateur WHERE id_utilisateur = ?");
     if ($stmt->execute([$id])) {
         header("Location: dashboard.php");
