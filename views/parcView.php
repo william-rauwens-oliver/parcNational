@@ -57,6 +57,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
           <span class="nav__user-name"><?php echo htmlspecialchars($prenom); ?></span>
           <div class="dropdown-content">
             <a href="logout.php" class="nav__logout">Déconnexion</a>
+            <a href="logout.php" class="nav__logout">Mon compte</a>
           </div>
         </div>
       <?php else: ?>
