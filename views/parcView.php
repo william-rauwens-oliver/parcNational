@@ -1,15 +1,8 @@
 <?php
 session_start();
 
-// Supposons que lorsque l'utilisateur se connecte, son prénom soit stocké dans une session, par exemple:
-// $_SESSION['prenom'] = "John";
-
 $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,21 +24,21 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   <nav>
     <div class="nav__header">
       <div class="nav__logo">
-        <a href="#" class="logo">ParcNational</a>
+        <a href="Accueil.php" class="logo">ParcNational</a>
       </div>
       <div class="nav__menu__btn" id="menu-btn">
         <i class="ri-menu-line"></i>
       </div>
     </div>
     <ul class="nav__links" id="nav-links">
-      <li><a href="#home">ACCUEIL</a></li>
-      <li><a href="#about">NOS SENTIERS</a></li>
-      <li><a href="#tour">NOS CAMPINGS</a></li>
+      <li><a href="Accueil.php">ACCUEIL</a></li>
+      <li><a href="#Sentiers">NOS SENTIERS</a></li>
+      <li><a href="#Campings">NOS CAMPINGS</a></li>
       <li><a href="#contact">CONTACT</a></li>
       <li><a href="#">BOOK TRIP</a></li>
     </ul>
     <div class="nav__btns">
-    <button class="btn">VOYAGER</button>
+    <button class="btn" onclick="location.href='#tour';">VOYAGER</button>
     <div class="nav__icons">
       <a href="#" class="nav__icon" id="notification-icon">
         <i class="ri-notification-2-line"></i>
@@ -84,7 +77,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
       <p>Vous voici dans votre magnifique Parc.</p>
       <h1>Votre Expérience de notre Parc des calanques</h1>
       <div class="header__btns">
-        <button class="btn">Réservez dès maintenant !</button>
+      <button class="btn" onclick="location.href='#Reservation';">Réservez dès maintenant !</button>
         <a href="#" id="openModal">
           <span><i class="ri-play-circle-fill"></i></span>
         </a>
@@ -104,7 +97,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   </div>
 
   <!-- Section Sentiers -->
-  <section class="section__container destination__container" id="about">
+  <section class="section__container destination__container" id="Sentiers">
     <h2 class="section__header">Nos sentiers</h2>
     <p class="section__description">Découvre nos sentiers dans notre parc des calanques</p>
     <div class="destination__grid">
@@ -136,7 +129,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   </section>
 
 <!-- Section Campings -->
-<section class="section__container destination__container" id="camping">
+<section class="section__container destination__container" id="Campings">
   <h2 class="section__header">Nos campings</h2>
   <p class="section__description">Découvre nos campings dans notre parc des calanques</p>
   <div class="destination__grid">
@@ -160,7 +153,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   </div>
 </section>
 
-  <div class="container">
+  <div class="container" id="Reservation">
     <h2>Réservation</h2>
     <form id="travelForm">
       <label for="destination">Où allez-vous ?</label>
@@ -446,13 +439,13 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
           </p>
           <ul class="footer__socials">
             <li>
-              <a href="#"><i class="ri-facebook-fill"></i></a>
+              <a href="https://www.facebook.com/LaPlateformeIO/?locale=fr_FR"><i class="ri-facebook-fill"></i></a>
             </li>
             <li>
-              <a href="#"><i class="ri-instagram-line"></i></a>
+              <a href="https://www.instagram.com/LaPlateformeIO/"><i class="ri-instagram-line"></i></a>
             </li>
             <li>
-              <a href="#"><i class="ri-youtube-line"></i></a>
+              <a href="https://www.youtube.com/channel/UChT80RwiTVKVGPti__ZEzUg/videos?app=desktop&view=0&sort=dd&shelf_id=0"><i class="ri-youtube-line"></i></a>
             </li>
           </ul>
         </div>
