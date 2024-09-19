@@ -366,7 +366,7 @@ header::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("assets/header-bg.jpg");
+  background-image: url("../assets/header-bg.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -573,7 +573,7 @@ header::before {
   padding: 1.5rem;
   font-weight: 600;
   color: var(--text-dark);
-  background-image: url("assets/header-bg.jpg");
+  background-image: url("../assets/header-bg.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
