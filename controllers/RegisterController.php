@@ -6,6 +6,7 @@ ini_set('display_startup_errors', 1);
 include_once __DIR__ . '/../models/UserModels.php';
 
 function handleRegistration() {
+    session_start();  // Démarrage de la session
     $conn = connectToDatabase();
     $error_message = '';
 
@@ -24,7 +25,12 @@ function handleRegistration() {
         }
         else {
             $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+
             if (registerUser($conn, $nom, $prenom, $email, $hashed_password)) {
+                $_SESSION['prenom'] = $prenom;
+                $_SESSION['nom'] = $nom;
+                $_SESSION['email'] = $email;
+
                 header("Location: Accueil.php");
                 exit();
             } else {
@@ -38,4 +44,3 @@ function handleRegistration() {
 }
 
 handleRegistration();
-?>
