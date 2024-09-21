@@ -172,7 +172,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   </div>
 
     <section class="section__container journey__container" id="tour">
-      <h2 class="section__header">Tes vacances à porté de mains !</h2>
+      <h2 class="section__header">Tes vacances à portée de mains !</h2>
       <p class="section__description">
         Prend rendez-vous dès maintenant pour tes vacances de rêve !
       </p>
