@@ -739,6 +739,25 @@ header::before {
   transition: 0.3s;
 }
 
+#camping {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+#camping option {
+  padding: 10px;
+  background-color: #fff;
+}
+
+#camping:hover {
+  border-color: #007BFF;
+}
+
 .client__card:hover h4 {
   color: var(--white);
 }
