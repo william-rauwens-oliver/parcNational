@@ -1,18 +1,14 @@
-document.getElementById('travelForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('travelForm');
+    
+    form.addEventListener('submit', function (event) {
+        // Ici, vous pouvez accéder aux éléments de formulaire
+        const camping = document.getElementById('camping').value;
+        const dateDebut = document.getElementById('departure').value;
+        const dateFin = document.getElementById('end').value;
+        const nombrePersonnes = document.getElementById('people').value;
 
-    const destination = document.getElementById('destination').value;
-    const departure = document.getElementById('departure').value;
-    const people = document.getElementById('people').value;
-
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `<p>Vous allez à <strong>${destination}</strong>.</p>
-                           <p>Vous partez le <strong>${departure}</strong>.</p>
-                           <p>Vous serez <strong>${people}</strong> personnes.</p>`;
-
-    resultDiv.style.display = 'block';
-
-    setTimeout(() => {
-        window.location.href = "reservation.html"; 
-    }, 100);
+        // Logique supplémentaire ici
+        console.log(`Camping: ${camping}, Date début: ${dateDebut}, Date fin: ${dateFin}, Nombre de personnes: ${nombrePersonnes}`);
+    });
 });

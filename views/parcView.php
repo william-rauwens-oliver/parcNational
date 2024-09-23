@@ -153,23 +153,89 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
   </div>
 </section>
 
-  <div class="container" id="Reservation">
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$conn = new mysqli("localhost", "root", "root", "parcNational");
+
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
+
+$sql = "SELECT id_reservation, nom_camping FROM Camping";
+$result = $conn->query($sql);
+?>
+
+<div class="container" id="Reservation">
     <h2>Réservation</h2>
-    <form id="travelForm">
-      <label for="destination">Où allez-vous ?</label>
-      <input type="text" id="destination" required>
+    <form id="travelForm" method="POST" action="">
+        <label for="camping">Choisissez un camping :</label>
+        <select id="camping" name="camping" required>
+            <option value="" disabled selected>-- Sélectionner un camping --</option>
+            <?php
+            $conn = new mysqli("localhost", "root", "root", "parcNational");
+            $sql = "SELECT id_reservation, nom_camping FROM Camping";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['id_reservation'] . "'>" . $row['nom_camping'] . "</option>";
+                }
+            }
+            ?>
+        </select>
 
-      <label for="departure">Quand partez-vous ?</label>
-      <input type="date" id="departure" required>
+        <label for="departure">Date de début de réservation :</label>
+        <input type="date" id="departure" name="date_debut" required>
 
-      <label for="people">À combien de personnes ?</label>
-      <input type="number" id="people" min="1" required>
+        <label for="end">Date de fin de réservation :</label>
+        <input type="date" id="end" name="date_fin" required>
 
-      <button type="submit">Envoyer</button>
+        <label for="people">Nombre de personnes :</label>
+        <input type="number" id="people" name="nombre_personnes" min="1" required>
+
+        <button type="submit" name="submit">Envoyer</button>
     </form>
+</div>
 
-    <div class="result" id="result" style="display:none;"></div>
-  </div>
+
+
+<?php
+$conn = new mysqli("localhost", "root", "root", "parcNational");
+
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
+
+if (isset($_POST['submit'])) {
+    $camping_id = $_POST['camping'];
+    $date_debut = $_POST['date_debut'];
+    $date_fin = $_POST['date_fin'];
+    $nombre_personnes = $_POST['nombre_personnes'];
+
+    $check_sql = "SELECT * FROM reservation_camping WHERE id_reservation = '$camping_id' AND 
+                  (date_debut <= '$date_fin' AND date_fin >= '$date_debut')";
+    $check_result = $conn->query($check_sql);
+
+    if ($check_result->num_rows > 0) {
+        echo "Une réservation existe déjà pour ce camping aux dates spécifiées.";
+    } else {
+        $insert_sql = "INSERT INTO reservation_camping (id_reservation, date_debut, date_fin, nombre_personnes, statut) 
+                       VALUES ('$camping_id', '$date_debut', '$date_fin', '$nombre_personnes', 'confirmée')";
+
+        if ($conn->query($insert_sql) === TRUE) {
+            echo "Réservation réussie !";
+        } else {
+            echo "Erreur : " . $conn->error;
+        }
+    }
+}
+
+$conn->close();
+?>
+
 
     <section class="section__container journey__container" id="tour">
       <h2 class="section__header">Tes vacances à portée de mains !</h2>

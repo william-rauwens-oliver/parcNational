@@ -7,7 +7,7 @@ class CampingModel {
     }
 
     public function getAllCampings() {
-        $sql = "SELECT date_reservation, date_debut, date_fin, statut, nombre_personnes, nom_camping, image FROM reservation_camping";
+        $sql = "SELECT date_reservation, date_debut, date_fin, statut, nombre_personnes, nom_camping, image FROM Camping";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
