@@ -28,6 +28,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Récupération des ressources naturelles
 $stmt = $pdo->query("SELECT * FROM Ressource_Naturelle");
 $ressources = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
