@@ -1,391 +1,869 @@
-.macbook-pro {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+.homepage {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* Empêche le contenu de s'étendre en largeur */
+  justify-content: flex-start; /* Aligne tout en haut */
+  align-items: flex-start; /* Aligne tout à gauche */
+  width: 100vw;
+  height: auto;
+  position: relative;
+}
+
+
+.homepage {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw; /* Utilise 100% de la largeur de la fenêtre */
+  height: auto;  /* Ajuste la hauteur automatiquement si besoin */
+  position: relative;
+}
+
+
+
+.homepage .overlap {
+  position: absolute;
+  width: 1440px;
+  height: 602px;
+  top: 132px;
+  left: 0;
+}
+
+.homepage .frame {
+  position: absolute;
+  width: 98px;
+  height: 73px;
+  top: 309px;
+  left: 768px;
+  background-color: #ffffff;
+}
+
+.homepage .faune {
+  position: absolute;
+  width: 1440px;
+  height: 602px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .we-re-farmers {
+  position: absolute;
+  width: 1020px;
+  top: 146px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #fffcfc;
+  font-size: 64px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+
+.homepage .text-wrapper {
+  letter-spacing: -0.82px;
+}
+
+.homepage .span {
+  font-family: "Newsreader-Italic", Helvetica;
+  font-style: italic;
+  letter-spacing: -0.82px;
+}
+
+.homepage .button {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  width: px;
+  height: 64px;
+  top: 349px;
+  left: 607px;
+  background-color: #426b1f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.homepage .text-wrapper-2 {
+  position: absolute;
+  height: 26px;
+  top: 18px;
+  left: 32px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.homepage .overlap-group {
+  position: absolute;
+  width: 1142px;
+  height: 554px;
+  top: 2097px;
+  left: 81px;
+}
+
+.homepage .we-believe-in {
+  position: absolute;
+  width: 1139px;
+  top: 16px;
+  left: 3px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.homepage .text-wrapper-3 {
+  position: absolute;
+  width: 181px;
+  top: 0;
+  left: 0;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0.56px;
+  line-height: 22.4px;
+}
+
+.homepage .jonathan-kemper {
+  position: absolute;
+  width: 504px;
+  height: 693px;
+  top: 1342px;
+  left: 58px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .central-california {
+  position: absolute;
+  width: 736px;
+  top: 2018px;
+  left: 660px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: -0.14px;
+  line-height: 22.4px;
+}
+
+.homepage .text-wrapper-4 {
+  font-weight: 500;
+  letter-spacing: -0.02px;
+}
+
+.homepage .text-wrapper-5 {
+  font-family: "Inter-Light", Helvetica;
+  font-weight: 300;
+  letter-spacing: -0.02px;
+}
+
+.homepage .header {
+  position: absolute;
+  width: 1440px;
+  height: 112px;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.homepage .text-wrapper-6 {
+  position: absolute;
+  top: 40px;
+  left: 96px;
+  font-family: "Newsreader-Medium", Helvetica;
+  font-weight: 500;
+  color: #426b1f;
+  font-size: 32px;
+  letter-spacing: -0.32px;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.homepage .text-wrapper-7 {
+  position: absolute;
+  height: 21px;
+  top: 44px;
+  left: 744px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20.8px;
+  white-space: nowrap;
+}
+
+.homepage .text-wrapper-8 {
+  position: absolute;
+  height: 21px;
+  top: 44px;
+  left: 831px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20.8px;
+  white-space: nowrap;
+}
+
+.homepage .text-wrapper-9 {
+  position: absolute;
+  height: 21px;
+  top: 44px;
+  left: 956px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20.8px;
+  white-space: nowrap;
+}
+
+.homepage .text-wrapper-10 {
+  position: absolute;
+  height: 21px;
+  top: 44px;
+  left: 1094px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20.8px;
+  white-space: nowrap;
+}
+
+.homepage .cart-button {
+  position: absolute;
+  width: 126px;
+  height: 48px;
+  top: 32px;
+  left: 1218px;
+  background-color: #426b1f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.homepage .text-wrapper-11 {
+  position: absolute;
+  height: 21px;
+  top: 12px;
+  left: 23px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20.8px;
+  white-space: nowrap;
+}
+
+.homepage .stocksy {
+  position: absolute;
+  width: 780px;
+  height: 480px;
+  top:1489px;
+  left: 660px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent {
+  position: absolute;
+  width: 303px;
+  height: 242px;
+  top: 784px;
+  left: 20px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .flore {
+  position: absolute;
+  width: 294px;
+  height: 242px;
+  top: 784px;
+  left: 396px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .calanque {
+  position: absolute;
+  width: 289px;
+  height: 242px;
+  top: 784px;
+  left: 761px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .text-wrapper-12 {
+  position: absolute;
+  width: 295px;
+  top: 1042px;
+  left: 817px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: normal;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  line-height: 38.4px;
+}
+
+.homepage .text-wrapper-13 {
+  position: absolute;
+  width: 199px;
+  top: 1045px;
+  left: 461px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: normal;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  line-height: 38.4px;
+  white-space: nowrap;
+}
+
+.homepage .text-wrapper-14 {
+  position: absolute;
+  width: 217px;
+  top: 1045px;
+  left: 63px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: normal;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  line-height: 38.4px;
+  white-space: nowrap;
+}
+
+.homepage .floremarin {
+  position: absolute;
+  width: 290px;
+  height: 245px;
+  top: 784px;
+  left: 1123px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .text-wrapper-15 {
+  position: absolute;
+  width: 233px;
+  top: 1039px;
+  left: 1180px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: normal;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  line-height: 38.4px;
+  white-space: nowrap;
+}
+
+.homepage .genette {
+  position: absolute;
+  width: 1047px;
+  height: 480px;
+  top: 2702px;
+  left: 203px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .overlap-group-2 {
+  position: absolute;
+  width: 1374px;
+  height: 710px;
+  top: 3196px;
+  left: 41px;
+}
+
+.homepage .p {
+  position: absolute;
+  width: 1139px;
+  top: 0;
+  left: 162px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.homepage .img {
+  left: 0;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 518px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-2 {
+  left: 285px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 518px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-3 {
+  left: 570px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 518px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-4 {
+  left: 854px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 518px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-5 {
+  left: 1138px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 518px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.homepage .rectangle{
+  position: absolute;
+  width: 780px;
+  height: 119px;
+  top:-1850px;
+  left:620px;
+  object-fit: cover;
+  border-radius: 20px;
   
-  .macbook-pro .div {
-    background-color: #ffffff;
-    width: 1512px;
-    height: 2520px;
-    position: relative;
-  }
+}
+.homepage .we-re-farmers1 {
+  position: relative;
+  width: 1020px;
+  top: 4900px;
+  left: 417px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #232323;
+  font-size: 64px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .faune1 {
+  position: absolute;
+  width: 1440px;
+  height: 650px;
+  top: 4300px;
+  left: 0;
+  object-fit: cover;
+  border-radius: 20px;
   
-  .macbook-pro .overlap {
-    position: absolute;
-    width: 1512px;
-    height: 1627px;
-    top: 89px;
-    left: 0;
+}
+.homepage .img2 {
+  left: 0;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 750px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-6 {
+  left: 285px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 750px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-7 {
+  left: 570px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 750px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-8 {
+  left: 854px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 750px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .serpent-9 {
+  left: 1138px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 750px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.marquee {
+  width: 100%; /* Largeur de la zone de défilement */
+  overflow: hidden;
+  margin-top: 1000px;
+  white-space: nowrap; /* Évite que le texte aille à la ligne */
+}
+
+.marquee p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite, fast-return 0.5s ease-in; /* Animation continue du texte */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Commence en dehors de l'écran à droite */
   }
-  
-  .macbook-pro .overlap-group {
-    position: absolute;
-    width: 1512px;
-    height: 1627px;
-    top: 0;
-    left: 0;
+  100% {
+    transform: translateX(-100%); /* Finit en dehors de l'écran à gauche */
   }
+}
+.homepage .we-re-farmers2 {
+  position: absolute;
+  width: 1020px;
+  top: 3720px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers3 {
+  position: absolute;
+  width: 460px;
+  top: 3720px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers4 {
+  position: absolute;
+  width: 0px;
+  top: 3720px;
+  left: 90px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers5 {
+  position: absolute;
+  width: 1580px;
+  top: 3720px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers6 {
+  position: absolute;
+  width: 2140px;
+  top: 3720px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .fauneterreste10 {
+  position: absolute;
+  width: 1650px;
+  top: 1320px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 100;
+  color: #0b0b0b;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers7 {
+  position: absolute;
+  width: 2140px;
+  top: 3960px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+
+.homepage .we-re-farmers8 {
+  position: absolute;
+  width: 1580px;
+  top: 3960px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers9 {
+  position: absolute;
+  width: 1040px;
+  top: 3960px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers10 {
+  position: absolute;
+  width: 0px;
+  top: 3960px;
+  left: 90px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .we-re-farmers11 {
+  position: absolute;
+  width: 0px;
+  top: 3960px;
+  left: 370px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 44px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .fauneterreste11 {
+  position: absolute;
+  width: 850px;
+  top: 4200px;
+  left: 217px;
+  font-family: "Newsreader-Regular", Helvetica;
+  font-weight: 100;
+  color: #0b0b0b;
+  font-size: 33px;
+  text-align: center;
+  letter-spacing: -1.28px;
+  line-height: 76.8px;
+}
+.homepage .fleurexplication {
+  position: absolute;
+  width: 504px;
+  height: 693px;
+  top: 5100px;
+  left: 58px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.homepage .overlap-group-3 {
+  position: absolute;
+  width: 374px;
+  height: 710px;
+  top: 3000px;
+  left: 390px;
+}
+.homepage .p2 {
+  position: absolute;
+  width: 1139px;
+  top: 0;
+  left: 162px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+
+
+
+
+.homepage .imgf1 {
+  left: 0;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3018px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf2 {
+  left: 285px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3018px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf3 {
+  left: 570px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3018px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf4 {
+  left: 854px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3018px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf5 {
+  left: 1138px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3018px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.homepage .imgf6 {
+  left: 285px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf7 {
+  left: 570px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf8 {
+  left: 854px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.homepage .imgf9 {
+  left: 1138px;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.homepage .imgf10 {
+  left: 0;
+  position: absolute;
+  width: 236px;
+  height: 192px;
+  top: 3250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.homepage .floremarin1 {
+  position: absolute;
+  width: 1440px;
+  height: 650px;
+  top: 7000px;
+  left: 0;
+  object-fit: cover;
+  border-radius: 20px;
   
-  .macbook-pro .image {
-    width: 1512px;
-    height: 795px;
-    flex-shrink: 0;
-  }
-  
-  .macbook-pro .ellipse {
-    position: absolute;
-    width: 208px;
-    height: 203px;
-    top: 41px;
-    left: 344px;
-    background-color: #94ad96;
-    border-radius: 104px/101.5px;
-  }
-  
-  .macbook-pro .ellipse-2 {
-    position: absolute;
-    width: 297px;
-    height: 286px;
-    top: 0;
-    left: 608px;
-    background-color: #94ad96;
-    border-radius: 148.5px/143px;
-  }
-  
-  .macbook-pro .rectangle {
-    position: absolute;
-    width: 479px;
-    height: 738px;
-    top: 472px;
-    left: 552px;
-    background-color: #f7f7f7;
-    border-radius: var(--shape-corner-extra-large);
-    mix-blend-mode: multiply;
-  }
-  
-  .macbook-pro .arrow-forward {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 118px;
-    left: 1242px;
-  }
-  
-  .macbook-pro .arrow-back {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 118px;
-    left: 238px;
-  }
-  
-  .macbook-pro .ellipse-3 {
-    position: absolute;
-    width: 208px;
-    height: 203px;
-    top: 38px;
-    left: 962px;
-    background-color: #94ad96;
-    border-radius: 104px/101.5px;
-  }
-  
-  .macbook-pro .une-ballade-dans-les {
-    position: absolute;
-    width: 465px;
-    top: 499px;
-    left: 566px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .macbook-pro .la-faune-des {
-    position: absolute;
-    width: 406px;
-    height: 79px;
-    top: 379px;
-    left: 569px;
-  }
-  
-  .macbook-pro .text-wrapper {
-    position: absolute;
-    width: 955px;
-    top: 1418px;
-    left: 421px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .macbook-pro .img {
-    width: 315px;
-    height: 212px;
-    top: 62px;
-    left: 252px;
-    position: absolute;
-    object-fit: cover;
-    margin-top: -50px;
-    margin-left: 20px;
-    
-  }
-  
-  .macbook-pro .image-2 {
-    width: 282px;
-    height: 300px;
-    top: 35px;
-    left: 639px;
-    position: absolute;
-    object-fit: cover;
-    margin-top: -70px;
-  }
-  
-  .macbook-pro .image-3 {
-    position: absolute;
-    width: 200px;
-    height: 150px;
-    top: 5px;
-    left: 933px;
-    object-fit: cover;
-    margin-top: 50px;
-    margin-left: 30px;
-  }
-  
-  .macbook-pro .image-4 {
-    width: 388px;
-    height: 364px;
-    top: 1163px;
-    left: 0;
-    position: absolute;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .line {
-    top: 1414px;
-    left: 388px;
-    position: absolute;
-    width: 1px;
-    height: 113px;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .overlap-2 {
-    position: absolute;
-    width: 1512px;
-    height: 741px;
-    top: 1739px;
-    left: 0;
-  }
-  
-  .macbook-pro .overlap-3 {
-    position: absolute;
-    width: 1512px;
-    height: 737px;
-    top: 4px;
-    left: 0;
-  }
-  
-  .macbook-pro .p {
-    width: 1249px;
-    top: 0;
-    left: 127px;
-    position: absolute;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .macbook-pro .text-wrapper-2 {
-    position: absolute;
-    width: 1290px;
-    top: 170px;
-    left: 122px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .macbook-pro .image-5 {
-    width: 424px;
-    height: 221px;
-    top: 279px;
-    left: 0;
-    position: absolute;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .image-6 {
-    width: 292px;
-    height: 626px;
-    top: 111px;
-    left: 1220px;
-    position: absolute;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .text-wrapper-3 {
-    width: 831px;
-    top: 406px;
-    left: 441px;
-    position: absolute;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .macbook-pro .line-2 {
-    top: 407px;
-    left: 403px;
-    position: absolute;
-    width: 1px;
-    height: 113px;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .line-3 {
-    top: 0;
-    left: 84px;
-    position: absolute;
-    width: 1px;
-    height: 113px;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .line-4 {
-    top: 170px;
-    left: 84px;
-    position: absolute;
-    width: 1px;
-    height: 113px;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .text-wrapper-4 {
-    position: absolute;
-    width: 186px;
-    top: 32px;
-    left: 159px;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-weight: 600;
-    color: #000000;
-    font-size: 30px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .text-wrapper-5 {
-    position: absolute;
-    width: 86px;
-    top: 37px;
-    left: 422px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .text-wrapper-6 {
-    width: 174px;
-    top: 38px;
-    left: 552px;
-    position: absolute;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .text-wrapper-7 {
-    width: 156px;
-    top: 37px;
-    left: 770px;
-    position: absolute;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .text-wrapper-8 {
-    position: absolute;
-    width: 97px;
-    top: 38px;
-    left: 962px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .div-wrapper {
-    position: absolute;
-    width: 211px;
-    height: 53px;
-    top: 25px;
-    left: 1103px;
-    background-color: #000000;
-    border-radius: 30px;
-  }
-  
-  .macbook-pro .text-wrapper-9 {
-    position: absolute;
-    width: 116px;
-    top: 12px;
-    left: 48px;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    color: #ffffff;
-    font-size: 25px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .macbook-pro .element {
-    position: absolute;
-    width: 37px;
-    height: 46px;
-    top: 27px;
-    left: 1362px;
-    object-fit: cover;
-  }
-  
-  .macbook-pro .element-f {
-    position: absolute;
-    width: 58px;
-    height: 55px;
-    top: 14px;
-    left: 1429px;
-    object-fit: cover;
-  }
-  
+}
