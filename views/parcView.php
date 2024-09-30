@@ -140,8 +140,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
           <div class="destination__card__details">
             <div>
               <h4><?php echo htmlspecialchars($camping['nom_camping']); ?></h4>
-              <p>Date de début: <?php echo htmlspecialchars($camping['date_debut']); ?></p>
-              <p>Date de fin: <?php echo htmlspecialchars($camping['date_fin']); ?></p>
+              <p>Adresse: <?php echo htmlspecialchars($camping['adresse_camping']); ?></p>
               <p>Nombre de personnes: <?php echo htmlspecialchars($camping['nombre_personnes']); ?></p>
             </div>
           </div>
@@ -152,6 +151,7 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
     <?php endif; ?>
   </div>
 </section>
+
 
 <?php
 ini_set('display_errors', 1);
