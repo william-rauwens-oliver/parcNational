@@ -1,77 +1,8 @@
 <?php
-session_start(); // Démarre la session
+session_start();
 
-// Récupérer le prénom de la session (optionnel)
 $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Connexion à la base de données
-$conn = new mysqli("localhost", "root", "root", "parcNational");
-
-if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
-}
-
-// Initialisation d'un message
-$message = '';
-
-// Vérifier si l'utilisateur est connecté
-$id_utilisateur = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
-// Vérifier si le formulaire est soumis
-if (isset($_POST['submit'])) {
-    // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
-    if ($id_utilisateur === null) {
-        header("Location: ./SignIn.php");
-        exit(); // Terminez le script pour éviter toute exécution supplémentaire
-    }
-
-    $camping_id = $_POST['camping'];
-    $date_debut = $_POST['date_debut'];
-    $date_fin = $_POST['date_fin'];
-    $nombre_personnes = $_POST['nombre_personnes'];
-
-    // Vérification de la disponibilité
-    $check_sql = "SELECT * FROM reservation_camping WHERE id_reservation = '$camping_id' AND 
-                  (date_debut <= '$date_fin' AND date_fin >= '$date_debut')";
-    $check_result = $conn->query($check_sql);
-
-    if ($check_result->num_rows > 0) {
-        $message = "Une réservation existe déjà pour ce camping aux dates spécifiées.";
-    } else {
-        // Insertion de la réservation avec l'id_utilisateur
-        $insert_sql = "INSERT INTO reservation_camping (id_reservation, date_debut, date_fin, nombre_personnes, statut, id_utilisateur) 
-                       VALUES ('$camping_id', '$date_debut', '$date_fin', '$nombre_personnes', 'confirmée', '$id_utilisateur')";
-
-        // Exécuter l'insertion
-        if ($conn->query($insert_sql) === TRUE) {
-            $message = "Réservation réussie !";
-        } else {
-            $message = "Erreur : " . $conn->error;
-        }
-    }
-}
-
-// Récupérer les campings pour le formulaire
-$sql = "SELECT id_reservation, nom_camping FROM Camping";
-$result = $conn->query($sql);
 ?>
-
-<!-- Afficher le message de réservation -->
-<?php if (!empty($message)) : ?>
-    <div class="message"><?php echo $message; ?></div>
-<?php endif; ?>
-
-<?php
-$conn->close(); // Fermer la connexion à la base de données
-?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -209,8 +140,7 @@ $conn->close(); // Fermer la connexion à la base de données
           <div class="destination__card__details">
             <div>
               <h4><?php echo htmlspecialchars($camping['nom_camping']); ?></h4>
-              <p>Date de début: <?php echo htmlspecialchars($camping['date_debut']); ?></p>
-              <p>Date de fin: <?php echo htmlspecialchars($camping['date_fin']); ?></p>
+              <p>Adresse: <?php echo htmlspecialchars($camping['adresse_camping']); ?></p>
               <p>Nombre de personnes: <?php echo htmlspecialchars($camping['nombre_personnes']); ?></p>
             </div>
           </div>
@@ -222,7 +152,9 @@ $conn->close(); // Fermer la connexion à la base de données
   </div>
 </section>
 
+
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -233,6 +165,40 @@ if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
 
+// Récupérer l'ID de l'utilisateur connecté
+$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
+$id_utilisateur = isset($_SESSION['id_utilisateur']) ? $_SESSION['id_utilisateur'] : null;
+
+// Si le formulaire est soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    // Vérifiez si l'utilisateur est connecté
+    if (!$id_utilisateur) {
+        $message_erreur = "Veuillez vous connecter pour réserver.";
+    } else {
+        // Récupérer les données du formulaire
+        $id_camping = $_POST['camping'];
+        $date_debut = $_POST['date_debut'];
+        $date_fin = $_POST['date_fin'];
+        $nombre_personnes = $_POST['nombre_personnes'];
+
+        // Préparez la requête d'insertion
+        $sql_insert = "INSERT INTO reservation_camping (id_utilisateur, id_camping, date_debut, date_fin, nombre_personnes)
+                       VALUES (?, ?, ?, ?, ?)";
+        
+        $stmt = $conn->prepare($sql_insert);
+        $stmt->bind_param("iissi", $id_utilisateur, $id_camping, $date_debut, $date_fin, $nombre_personnes);
+
+        if ($stmt->execute()) {
+            $message_success = "Réservation réussie.";
+        } else {
+            $message_erreur = "Erreur lors de la réservation : " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+}
+
+// Votre code pour afficher les campings
 $sql = "SELECT id_reservation, nom_camping FROM Camping";
 $result = $conn->query($sql);
 ?>
@@ -244,10 +210,6 @@ $result = $conn->query($sql);
         <select id="camping" name="camping" required>
             <option value="" disabled selected>-- Sélectionner un camping --</option>
             <?php
-            $conn = new mysqli("localhost", "root", "root", "parcNational");
-            $sql = "SELECT id_reservation, nom_camping FROM Camping";
-            $result = $conn->query($sql);
-            
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<option value='" . $row['id_reservation'] . "'>" . $row['nom_camping'] . "</option>";
@@ -267,41 +229,19 @@ $result = $conn->query($sql);
 
         <button type="submit" name="submit">Envoyer</button>
     </form>
+
+    <?php
+    // Afficher les messages d'erreur ou de succès
+    if (isset($message_erreur)) {
+        echo "<p style='color: red;'>$message_erreur</p>";
+    }
+    if (isset($message_success)) {
+        echo "<p style='color: green;'>$message_success</p>";
+    }
+    ?>
 </div>
 
-
-
 <?php
-$conn = new mysqli("localhost", "root", "root", "parcNational");
-
-if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
-}
-
-if (isset($_POST['submit'])) {
-    $camping_id = $_POST['camping'];
-    $date_debut = $_POST['date_debut'];
-    $date_fin = $_POST['date_fin'];
-    $nombre_personnes = $_POST['nombre_personnes'];
-
-    $check_sql = "SELECT * FROM reservation_camping WHERE id_reservation = '$camping_id' AND 
-                  (date_debut <= '$date_fin' AND date_fin >= '$date_debut')";
-    $check_result = $conn->query($check_sql);
-
-    if ($check_result->num_rows > 0) {
-        echo "Une réservation existe déjà pour ce camping aux dates spécifiées.";
-    } else {
-        $insert_sql = "INSERT INTO reservation_camping (id_reservation, date_debut, date_fin, nombre_personnes, statut) 
-                       VALUES ('$camping_id', '$date_debut', '$date_fin', '$nombre_personnes', 'confirmée')";
-
-        if ($conn->query($insert_sql) === TRUE) {
-            echo "Réservation réussie !";
-        } else {
-            echo "Erreur : " . $conn->error;
-        }
-    }
-}
-
 $conn->close();
 ?>
 
