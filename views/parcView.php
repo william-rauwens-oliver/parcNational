@@ -158,7 +158,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$conn = new mysqli("localhost", "root", "root", "parcNational");
+require './config/database.php';
 
 if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
@@ -203,7 +203,7 @@ $result = $conn->query($sql);
 
 
 <?php
-$conn = new mysqli("localhost", "root", "root", "parcNational");
+require './config/database.php';
 
 if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);

@@ -2,10 +2,7 @@
 
 header('Content-Type: application/json');
 
-$host = "localhost";
-$dbname = "parcNational";
-$username = "root";
-$password = "root"; 
+require 'config/database.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

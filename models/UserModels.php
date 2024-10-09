@@ -1,9 +1,6 @@
 <?php
 function connectToDatabase() {
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "parcNational";
+    require './config/database.php';
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
