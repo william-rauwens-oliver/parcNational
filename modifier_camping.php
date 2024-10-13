@@ -38,11 +38,50 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier Camping</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        form { max-width: 600px; margin: 20px auto; padding: 20px; background-color: #f4f4f9; }
-        label { display: block; margin-bottom: 8px; }
-        input { width: 100%; padding: 8px; margin-bottom: 20px; }
-        button { padding: 10px; background-color: #007bff; color: #fff; border: none; cursor: pointer; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -58,7 +97,7 @@ if (isset($_GET['id'])) {
         <input type="number" id="nombre_personnes" name="nombre_personnes" value="<?= htmlspecialchars($camping['nombre_personnes']); ?>" required>
 
         <label for="image_camping">URL de l'image :</label>
-        <input type="url" id="image_url" name="image_url" value="<?= htmlspecialchars($camping['Image']); ?>" required>
+        <input type="url" id="image_camping" name="image_camping" value="<?= htmlspecialchars($camping['Image']); ?>" required>
 
         <button type="submit">Enregistrer</button>
     </form>

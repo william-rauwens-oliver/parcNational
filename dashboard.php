@@ -30,6 +30,10 @@ $ressources = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->query("SELECT * FROM camping");
 $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Récupération des visiteurs
+$stmt = $pdo->query("SELECT * FROM Visiteur");
+$visiteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -77,6 +81,7 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 
+
 <main>
     <section id="users" class="section">
         <h2 class="section__title">Gestion des Utilisateurs</h2>
@@ -109,6 +114,7 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
+
     <section id="trails" class="section">
     <h2 class="section__title">Gestion des Sentiers</h2>
     <div class="table-container">
@@ -140,6 +146,44 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                         <a href="modifier_sentier.php?id=<?= $sentier['id_sentier']; ?>" class="btn btn--edit">Modifier</a>
                         <a href="supprimer_sentier.php?id=<?= $sentier['id_sentier']; ?>" class="btn btn--delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce sentier ?')">Supprimer</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<section id="visiteurs" class="section">
+    <h2 class="section__title">Gestion des Visiteurs</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Utilisateur</th>
+                    <th>Abonnement</th>
+                    <th>Carte Membre</th>
+                    <th>Date d'Abonnement</th>
+                    <th>Date d'Expiration</th>
+                    <th>ID Sentier</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($visiteurs as $visiteur) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($visiteur['id_visiteur'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['id_utilisateur'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['abonnement'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['carte_membre'] === 'oui' ? 'Oui' : 'Non'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['date_abonnement'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['date_expiration_abonnement'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($visiteur['id_sentier'] ?? 'N/A'); ?></td>
+                    <td>
+                        <a href="modifier_visiteur.php?id=<?= $visiteur['id_visiteur']; ?>" class="btn btn--edit">Modifier</a>
+                        <a href="supprimer_visiteur.php?id=<?= $visiteur['id_visiteur']; ?>" class="btn btn--delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce visiteur ?')">Supprimer</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -185,8 +229,6 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 
-
-<!-- Section pour les campings -->
 <section id="campsites" class="section">
     <h2 class="section__title">Gestion des Campings</h2>
     <div class="table-container">
@@ -221,7 +263,6 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 
-<!-- Formulaire pour ajouter un camping -->
 <section id="add-camping" class="section">
     <h2 class="section__title">Ajouter un Nouveau Camping</h2>
     <form action="ajouter_camping.php" method="POST" class="form">
@@ -273,6 +314,7 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
+
     <section id="resources" class="section">
         <h2 class="section__title">Gestion des Ressources Naturelles</h2>
         <div class="table-container">
@@ -306,6 +348,7 @@ $campings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
+    
     <section id="add-resource" class="section">
         <h2 class="section__title">Ajouter une Nouvelle Ressource Naturelle</h2>
         <form action="ajouter_ressource.php" method="POST" class="form">
