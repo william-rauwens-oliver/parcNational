@@ -629,10 +629,11 @@ $conn->close();
         <div class="footer__col">
           <h4>Liens Rapide</h4>
           <ul class="footer__links">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Nos calanques</a></li>
-            <li><a href="#">Nos campings</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="Accueil.php">Accueil</a></li>
+            <li><a href="#Sentiers">Nos sentiers</a></li>
+            <li><a href="#Campings">Nos campings</a></li>
+            <li><a href="Ressources.html">Nos ressources</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer__col">
