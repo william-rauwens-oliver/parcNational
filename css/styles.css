@@ -76,7 +76,22 @@ html,
 body {
   scroll-behavior: smooth;
 }
+.image-container {
+  position: relative;
+  width: 100%;
+}
 
+.trail-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none; /* La carte sera affichée lors du hover */
+}
+
+.image-container:hover .trail-map {
+  display: block;
+}
 body {
   font-family: "DM Sans", sans-serif;
 }
@@ -288,6 +303,48 @@ nav {
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+}
+
+.destination__card form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+/* étiquettes */
+.destination__card form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* sélecteurs */
+.destination__card form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.destination__card form select:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+.destination__card form .btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer; 
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.destination__card form .btn:hover {
+  background-color: #0056b3;
 }
 
 .modal-content iframe {

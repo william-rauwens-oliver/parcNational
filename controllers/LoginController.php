@@ -13,23 +13,21 @@ function handleLogin() {
         $email = $_POST['email'] ?? '';
         $mot_de_passe = $_POST['mot_de_passe'] ?? '';
 
-        $stmt = $conn->prepare("SELECT mot_de_passe, nom, prenom FROM Utilisateur WHERE email = ?");
-        if ($stmt === false) {
-            die("Erreur de préparation de la requête: " . $conn->error);
-        }
+        $stmt = $conn->prepare("SELECT id_utilisateur, mot_de_passe, nom, prenom FROM Utilisateur WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        $stmt->bind_result($hashed_password, $nom, $prenom);
+        $stmt->bind_result($user_id, $hashed_password, $nom, $prenom);
         $stmt->fetch();
         $stmt->close();
-
+        
         if ($hashed_password) {
             if (password_verify($mot_de_passe, $hashed_password)) {
                 session_start();
+                $_SESSION['user_id'] = $user_id;  // Ajout de l'ID utilisateur dans la session
                 $_SESSION['email'] = $email;
                 $_SESSION['nom'] = $nom;
                 $_SESSION['prenom'] = $prenom;
-
+        
                 header("Location: Accueil.php");
                 exit();
             } else {
@@ -37,7 +35,7 @@ function handleLogin() {
             }
         } else {
             $error_message = "Aucun compte trouvé avec cet email.";
-        }
+        }        
         $conn->close();
     }
 

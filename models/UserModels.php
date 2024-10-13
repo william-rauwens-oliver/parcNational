@@ -32,7 +32,7 @@ function registerUser($conn, $nom, $prenom, $email, $hashed_password) {
     $stmt->bind_param("sssss", $nom, $prenom, $email, $hashed_password, $role);
 
     if ($stmt->execute()) {
-        return true;
+        return $conn->insert_id;  // Retourne l'ID utilisateur créé
     } else {
         echo "Erreur lors de l'exécution de la requête: " . $stmt->error;
         return false;

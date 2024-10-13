@@ -5,6 +5,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
    <link rel="stylesheet" href="./assets/css/SignIn.css">
+   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data:;">
+   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+   <meta name="referrer" content="no-referrer" />
+   <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
    <title>Connexion</title>
 </head>
 <body>

@@ -2,23 +2,97 @@
 session_start();
 
 $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+if ($user_id === null) {}
+
+require './config/database.php';
+
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM camping";
+$result = $conn->query($sql);
+$campings = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $campings[] = $row;
+    }
+}
+
+$message = '';
+
+if (isset($_POST['submit'])) {
+  $camping_id = $_POST['camping'];
+  $date_debut = $_POST['date_debut'];
+  $date_fin = $_POST['date_fin'];
+  $nombre_personnes = $_POST['nombre_personnes'];
+
+  $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+  if ($user_id) {
+      $check_sql = "SELECT * FROM reservation_camping WHERE id_camping = '$camping_id' AND 
+                    (date_debut < '$date_fin' AND date_fin > '$date_debut')";
+      $check_result = $conn->query($check_sql);
+
+      if ($check_result->num_rows > 0) {
+          $message = "Une réservation existe déjà pour ce camping aux dates spécifiées.";
+      } else {
+          $insert_sql = "INSERT INTO reservation_camping (date_debut, date_fin, nombre_personnes, statut, id_utilisateur, id_camping) 
+                         VALUES ('$date_debut', '$date_fin', '$nombre_personnes', 'confirmée', '$user_id', '$camping_id')";
+
+          if ($conn->query($insert_sql) === TRUE) {
+              $message = "Réservation réussie !";
+          } else {
+              $message = "Erreur : " . $conn->error;
+          }
+      }
+  } else {
+      $message = "Erreur : Utilisateur non connecté.";
+  }
+}
+
+
+$reserved_dates = [];
+if (isset($camping_id)) {
+    $sql = "SELECT date_debut, date_fin FROM reservation_camping WHERE id_camping = '$camping_id'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $start = new DateTime($row['date_debut']);
+            $end = new DateTime($row['date_fin']);
+            $period = new DatePeriod($start, new DateInterval('P1D'), $end->modify('+1 day'));
+            foreach ($period as $date) {
+                $reserved_dates[] = $date->format('Y-m-d');
+            }
+        }
+    }
+}
+$reserved_dates_json = json_encode($reserved_dates);
+
+// Fermer la connexion
+$conn->close();
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=()">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
   <title>ParcNational</title>
+
 </head>
 <body>
   <nav>
@@ -38,29 +112,31 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
       <li><a href="#">BOOK TRIP</a></li>
     </ul>
     <div class="nav__btns">
-    <button class="btn" onclick="location.href='#tour';">VOYAGER</button>
-    <div class="nav__icons">
-      <a href="#" class="nav__icon" id="notification-icon">
-        <i class="ri-notification-2-line"></i>
-        <span class="notification-badge">3</span>
-      </a>
-
-      <?php if ($prenom): ?>
-        <div class="dropdown">
-          <span class="nav__user-name"><?php echo htmlspecialchars($prenom); ?></span>
-          <div class="dropdown-content">
-            <a href="logout.php" class="nav__logout">Déconnexion</a>
-            <a href="logout.php" class="nav__logout">Mon compte</a>
-          </div>
-        </div>
-      <?php else: ?>
-        <a href="SignIn.php" class="nav__icon">
-          <i class="ri-user-line"></i>
+      <button class="btn" onclick="location.href='#tour';">VOYAGER</button>
+      <div class="nav__icons">
+        <a href="#" class="nav__icon" id="notification-icon">
+          <i class="ri-notification-2-line"></i>
+          <span class="notification-badge">3</span>
         </a>
-      <?php endif; ?>
+
+        <?php if ($prenom): ?>
+          <!-- Si l'utilisateur est connecté, affichez son prénom -->
+          <div class="dropdown">
+            <span class="nav__user-name"><?php echo htmlspecialchars($prenom); ?></span>
+            <div class="dropdown-content">
+              <a href="logout.php" class="nav__logout">Déconnexion</a>
+              <a href="compte.php" class="nav__logout">Mon compte</a>
+            </div>
+          </div>
+        <?php else: ?>
+          <!-- Si l'utilisateur n'est pas connecté, affichez l'icône de connexion -->
+          <a href="SignIn.php" class="nav__icon">
+            <i class="ri-user-line"></i>
+          </a>
+        <?php endif; ?>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <div class="notification-modal" id="notification-modal">
     <div class="notification-modal__header">
@@ -96,37 +172,63 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
     </div>
   </div>
 
-  <!-- Section Sentiers -->
-  <section class="section__container destination__container" id="Sentiers">
+<!-- Section Sentiers -->
+<section class="section__container destination__container" id="Sentiers">
     <h2 class="section__header">Nos sentiers</h2>
     <p class="section__description">Découvre nos sentiers dans notre parc des calanques</p>
     <div class="destination__grid">
-      <?php if (!empty($sentiers)): ?>
-        <?php foreach ($sentiers as $sentier): ?>
-          <div class="destination__card">
-            <img src="<?php echo htmlspecialchars($sentier['image']); ?>" alt="trail" />
+
+    <?php if (!empty($sentiers)): ?>
+    <?php foreach ($sentiers as $sentier): ?>
+        <div class="destination__card">
+            <img src="<?php echo htmlspecialchars($sentier['image'] ?? ''); ?>" alt="Image du sentier" />
             <div class="destination__card__details">
-              <div>
-                <h4><?php echo htmlspecialchars($sentier['nom_sentier']); ?></h4>
-                <p><?php echo htmlspecialchars($sentier['description']); ?></p>
-                <p>Difficulté : <?php echo htmlspecialchars($sentier['difficulte']); ?></p>
-                <p>Longueur : <?php echo htmlspecialchars($sentier['longueur_km']); ?> km</p>
-                <p>Points d'intérêt : <?php echo htmlspecialchars($sentier['points_interet']); ?></p>
-                <p>Ville : <?php echo htmlspecialchars($sentier['ville']); ?></p>
-                <p>Pays : <?php echo htmlspecialchars($sentier['pays']); ?></p>
-              </div>
-              <div class="destination__rating">
-                <span><i class="ri-star-fill"></i></span>
-                4.7
-              </div>
+                <div>
+                    <h4><?php echo htmlspecialchars($sentier['nom_sentier'] ?? 'Nom inconnu'); ?></h4>
+                    <p><?php echo htmlspecialchars($sentier['description'] ?? 'Description indisponible'); ?></p>
+                    <p>Difficulté : <?php echo htmlspecialchars($sentier['difficulte'] ?? 'Inconnue'); ?></p>
+                    <p>Longueur : <?php echo htmlspecialchars($sentier['longueur_km'] ?? 'Inconnue'); ?> km</p>
+                    <p>Points d'intérêt : <?php echo htmlspecialchars($sentier['points_interet'] ?? 'Aucun'); ?></p>
+                    <p>Ville : <?php echo htmlspecialchars($sentier['ville'] ?? 'Inconnue'); ?></p>
+                    <p>Pays : <?php echo htmlspecialchars($sentier['pays'] ?? 'Inconnu'); ?></p>
+                </div>
+                <div class="destination__rating">
+                    <span><i class="ri-star-fill"></i></span>
+                    <?php echo isset($sentier['note']) ? htmlspecialchars($sentier['note']) : 'N/A'; ?>
+                </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <p>Aucun sentier à afficher pour le moment.</p>
-      <?php endif; ?>
+
+            <!-- Formulaire pour devenir visiteur -->
+            <form method="POST" action="devenir_visiteur.php">
+                <input type="hidden" name="id_utilisateur" value="<?php echo htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">
+                <input type="hidden" name="id_sentier" value="<?php echo htmlspecialchars($sentier['id_sentier'] ?? ''); ?>"> <!-- Assurez-vous que ça contient une valeur -->
+
+                <label for="abonnement">Choisissez votre type d'abonnement :</label>
+                <select name="abonnement" required>
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                    <option value="VIP">VIP</option>
+                </select>
+
+                <label for="carte_membre">Souhaitez-vous une carte membre ?</label>
+                <select name="carte_membre" required>
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                </select>
+
+                <button type="submit" class="btn">Devenir Visiteur</button>
+            </form>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Aucun sentier à afficher pour le moment.</p>
+<?php endif; ?>
+
     </div>
-  </section>
+</section>
+
+
+
 
 <!-- Section Campings -->
 <section class="section__container destination__container" id="Campings">
@@ -136,10 +238,15 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
     <?php if (!empty($campings)): ?>
       <?php foreach ($campings as $camping): ?>
         <div class="destination__card">
-          <img src="<?php echo htmlspecialchars($camping['image']); ?>" alt="camping" />
+          <?php 
+            // Récupération de l'URL de l'image
+            $image_path = htmlspecialchars($camping['Image']); 
+            $camping_name = htmlspecialchars($camping['nom_camping']); 
+          ?>
+          <img src="<?php echo $image_path; ?>" alt="<?php echo $camping_name; ?>" />
           <div class="destination__card__details">
             <div>
-              <h4><?php echo htmlspecialchars($camping['nom_camping']); ?></h4>
+              <h4><?php echo $camping_name; ?></h4>
               <p>Adresse: <?php echo htmlspecialchars($camping['adresse_camping']); ?></p>
               <p>Nombre de personnes: <?php echo htmlspecialchars($camping['nombre_personnes']); ?></p>
             </div>
@@ -153,54 +260,6 @@ $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : null;
 </section>
 
 
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require './config/database.php';
-
-if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
-}
-
-$sql = "SELECT id_reservation, nom_camping FROM Camping";
-$result = $conn->query($sql);
-?>
-
-<div class="container" id="Reservation">
-    <h2>Réservation</h2>
-    <form id="travelForm" method="POST" action="">
-        <label for="camping">Choisissez un camping :</label>
-        <select id="camping" name="camping" required>
-            <option value="" disabled selected>-- Sélectionner un camping --</option>
-            <?php
-            $conn = new mysqli("localhost", "root", "root", "parcNational");
-            $sql = "SELECT id_reservation, nom_camping FROM Camping";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row['id_reservation'] . "'>" . $row['nom_camping'] . "</option>";
-                }
-            }
-            ?>
-        </select>
-
-        <label for="departure">Date de début de réservation :</label>
-        <input type="date" id="departure" name="date_debut" required>
-
-        <label for="end">Date de fin de réservation :</label>
-        <input type="date" id="end" name="date_fin" required>
-
-        <label for="people">Nombre de personnes :</label>
-        <input type="number" id="people" name="nombre_personnes" min="1" required>
-
-        <button type="submit" name="submit">Envoyer</button>
-    </form>
-</div>
-
-
 
 <?php
 require './config/database.php';
@@ -208,6 +267,8 @@ require './config/database.php';
 if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
+
+$message = '';
 
 if (isset($_POST['submit'])) {
     $camping_id = $_POST['camping'];
@@ -215,26 +276,58 @@ if (isset($_POST['submit'])) {
     $date_fin = $_POST['date_fin'];
     $nombre_personnes = $_POST['nombre_personnes'];
 
-    $check_sql = "SELECT * FROM reservation_camping WHERE id_reservation = '$camping_id' AND 
-                  (date_debut <= '$date_fin' AND date_fin >= '$date_debut')";
-    $check_result = $conn->query($check_sql);
+    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-    if ($check_result->num_rows > 0) {
-        echo "Une réservation existe déjà pour ce camping aux dates spécifiées.";
-    } else {
-        $insert_sql = "INSERT INTO reservation_camping (id_reservation, date_debut, date_fin, nombre_personnes, statut) 
-                       VALUES ('$camping_id', '$date_debut', '$date_fin', '$nombre_personnes', 'confirmée')";
+    if ($user_id) {
+        $insert_sql = "INSERT INTO reservation_camping (date_debut, date_fin, nombre_personnes, statut, id_utilisateur, id_camping) 
+                       VALUES ('$date_debut', '$date_fin', '$nombre_personnes', 'confirmée', '$user_id', '$camping_id')";
 
         if ($conn->query($insert_sql) === TRUE) {
-            echo "Réservation réussie !";
+            $message = "Réservation réussie !";
         } else {
-            echo "Erreur : " . $conn->error;
+            $message = "Erreur : " . $conn->error;
         }
+    } else {
+        $message = "Erreur : Utilisateur non connecté.";
     }
 }
 
 $conn->close();
 ?>
+
+<!-- Formulaire de Réservation -->
+<div class="container" id="Reservation">
+    <h2>Réservation</h2>
+    <form id="travelForm" method="POST" action="">
+        <label for="camping">Choisissez un camping :</label>
+        <select id="camping" name="camping" required>
+            <option value="" disabled selected>Sélectionnez un camping !</option>
+            <?php if (!empty($campings)): ?>
+                <?php foreach ($campings as $camping): ?>
+                    <option value="<?php echo htmlspecialchars($camping['id_camping']); ?>">
+                        <?php echo htmlspecialchars($camping['nom_camping']); ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <option value="" disabled>Aucun camping disponible</option>
+            <?php endif; ?>
+        </select>
+        
+        <label for="date_debut">Date de début :</label>
+        <input type="date" id="date_debut" name="date_debut" required>
+
+        <label for="date_fin">Date de fin :</label>
+        <input type="date" id="date_fin" name="date_fin" required>
+
+        <label for="nombre_personnes">Nombre de personnes :</label>
+        <input type="number" id="nombre_personnes" name="nombre_personnes" required min="1">
+
+        <button type="submit" name="submit">Réserver</button>
+    </form>
+    <?php if ($message): ?>
+        <p class="error-message"><?php echo $message; ?></p>
+    <?php endif; ?>
+</div>
 
 
     <section class="section__container journey__container" id="tour">

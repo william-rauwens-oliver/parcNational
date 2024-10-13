@@ -26,16 +26,19 @@ function handleRegistration() {
         else {
             $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
-            if (registerUser($conn, $nom, $prenom, $email, $hashed_password)) {
+            $user_id = registerUser($conn, $nom, $prenom, $email, $hashed_password);
+
+            if ($user_id) {
+                $_SESSION['user_id'] = $user_id;  // Ajout de l'ID utilisateur dans la session
                 $_SESSION['prenom'] = $prenom;
                 $_SESSION['nom'] = $nom;
                 $_SESSION['email'] = $email;
-
+            
                 header("Location: Accueil.php");
                 exit();
             } else {
                 $error_message = "Erreur lors de l'inscription. Veuillez réessayer.";
-            }
+            }            
         }
         $conn->close();
     }
@@ -44,3 +47,4 @@ function handleRegistration() {
 }
 
 handleRegistration();
+?>
