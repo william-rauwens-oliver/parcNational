@@ -193,10 +193,6 @@ $conn->close();
                     <p>Ville : <?php echo htmlspecialchars($sentier['ville'] ?? 'Inconnue'); ?></p>
                     <p>Pays : <?php echo htmlspecialchars($sentier['pays'] ?? 'Inconnu'); ?></p>
                 </div>
-                <div class="destination__rating">
-                    <span><i class="ri-star-fill"></i></span>
-                    <?php echo isset($sentier['note']) ? htmlspecialchars($sentier['note']) : 'N/A'; ?>
-                </div>
             </div>
 
             <!-- Formulaire pour devenir visiteur -->
@@ -341,7 +337,10 @@ $conn->close();
         <label for="nombre_personnes">Nombre de personnes :</label>
         <input type="number" id="nombre_personnes" name="nombre_personnes" required min="1">
 
-        <button type="submit" name="submit">Réserver</button>
+        <div class="button-container">
+          <button type="submit" name="submit">Réserver</button>
+        </div>
+
     </form>
     <?php if ($message): ?>
         <p class="error-message"><?php echo $message; ?></p>

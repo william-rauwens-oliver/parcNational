@@ -424,6 +424,11 @@ input[type="number"]:focus {
 }
 
 
+.button-container {
+  text-align: center; 
+  margin-top: 20px;
+}
+
 button {
   background-color: #0071e3; 
   color: white;
