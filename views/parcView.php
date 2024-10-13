@@ -108,6 +108,7 @@ $conn->close();
       <li><a href="Accueil.php">ACCUEIL</a></li>
       <li><a href="#Sentiers">NOS SENTIERS</a></li>
       <li><a href="#Campings">NOS CAMPINGS</a></li>
+      <li><a href="Ressources.html">NOS RESSOURCES</a></li>
       <li><a href="#contact">CONTACT</a></li>
       <li><a href="#">BOOK TRIP</a></li>
     </ul>
