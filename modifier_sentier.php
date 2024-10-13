@@ -20,13 +20,21 @@ if (isset($_GET['id'])) {
         $description = $_POST['description'];
         $difficulte = $_POST['difficulte'];
         $longueur_km = $_POST['longueur_km'];
+        $image_url = $_POST['image_url'];
+        $point_interet = $_POST['point_interet'];
+        $ville = $_POST['ville'];
+        $pays = $_POST['pays'];
 
-        $stmt = $pdo->prepare("UPDATE Sentier SET nom_sentier = :nom, description = :description, difficulte = :difficulte, longueur_km = :longueur_km WHERE id_sentier = :id");
+        $stmt = $pdo->prepare("UPDATE Sentier SET nom_sentier = :nom, description = :description, difficulte = :difficulte, longueur_km = :longueur_km, image_url = :image_url, point_interet = :point_interet, ville = :ville, pays = :pays WHERE id_sentier = :id");
         $stmt->execute([
             ':nom' => $nom_sentier,
             ':description' => $description,
             ':difficulte' => $difficulte,
             ':longueur_km' => $longueur_km,
+            ':image_url' => $image_url,
+            ':point_interet' => $point_interet,
+            ':ville' => $ville,
+            ':pays' => $pays,
             ':id' => $id_sentier
         ]);
 
@@ -109,6 +117,18 @@ if (isset($_GET['id'])) {
 
         <label for="longueur_km">Longueur (km) :</label>
         <input type="number" id="longueur_km" name="longueur_km" step="0.1" value="<?= htmlspecialchars($sentier['longueur_km']); ?>" required>
+
+        <label for="image_url">Lien de l'image :</label>
+        <input type="url" id="image_url" name="image_url" value="<?= htmlspecialchars($sentier['image']); ?>" required>
+
+        <label for="point_interet">Point d'intérêt :</label>
+        <input type="text" id="point_interet" name="point_interet" value="<?= htmlspecialchars($sentier['points_interet']); ?>" required>
+
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" value="<?= htmlspecialchars($sentier['ville']); ?>" required>
+
+        <label for="pays">Pays :</label>
+        <input type="text" id="pays" name="pays" value="<?= htmlspecialchars($sentier['pays']); ?>" required>
 
         <button type="submit">Enregistrer</button>
     </form>
