@@ -283,36 +283,40 @@ $visiteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 
-    <section id="reservations" class="section">
-        <h2 class="section__title">Gestion des Réservations</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ID Utilisateur</th>
-                        <th>ID Sentier</th>
-                        <th>Date de Réservation</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reservations as $reservation) : ?>
-                    <tr>
-                        <td><?= htmlspecialchars($reservation['id_reservation'] ?? 'N/A'); ?></td>
-                        <td><?= htmlspecialchars($reservation['id_utilisateur'] ?? 'N/A'); ?></td>
-                        <td><?= htmlspecialchars($reservation['id_sentier'] ?? 'N/A'); ?></td>
-                        <td><?= htmlspecialchars($reservation['date_reservation'] ?? 'N/A'); ?></td>
-                        <td>
-                            <a href="modifier_reservation.php?id=<?= $reservation['id_reservation']; ?>" class="btn btn--edit">Modifier</a>
-                            <a href="supprimer_reservation.php?id=<?= $reservation['id_reservation']; ?>" class="btn btn--delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?')">Supprimer</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </section>
+<section id="reservations" class="section">
+    <h2 class="section__title">Gestion des Réservations</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Utilisateur</th>
+                    <th>ID Camping</th>
+                    <th>Date de Début</th>
+                    <th>Date de Fin</th>
+                    <th>Nombre de Personnes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reservations as $reservation) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($reservation['id_reservation'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($reservation['id_utilisateur'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($reservation['id_camping'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($reservation['date_debut'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($reservation['date_fin'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($reservation['nombre_personnes'] ?? 'N/A'); ?></td>
+                    <td>
+                        <a href="modifier_reservation.php?id=<?= $reservation['id_reservation']; ?>" class="btn btn--edit">Modifier</a>
+                        <a href="supprimer_reservation.php?id=<?= $reservation['id_reservation']; ?>" class="btn btn--delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?')">Supprimer</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
 
 
     <section id="resources" class="section">
@@ -348,7 +352,7 @@ $visiteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
-    
+
     <section id="add-resource" class="section">
         <h2 class="section__title">Ajouter une Nouvelle Ressource Naturelle</h2>
         <form action="ajouter_ressource.php" method="POST" class="form">
