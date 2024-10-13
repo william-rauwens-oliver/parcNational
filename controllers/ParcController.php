@@ -19,12 +19,10 @@ class ParcController {
     }
 
     public function becomeVisiteur($user_id, $abonnement = 'basic', $carte_membre = 'default') {
-        // Vérifiez si l'utilisateur est connecté
         if (!isset($user_id)) {
             throw new Exception("L'utilisateur n'est pas connecté.");
         }
 
-        // Ajoutez l'utilisateur à la table Visiteur
         $this->sentierModel->addVisiteur($user_id, $abonnement, $carte_membre);
     }
 }

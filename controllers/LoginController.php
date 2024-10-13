@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 
 include_once __DIR__ . '/../models/UserModels.php';
 
@@ -23,7 +20,7 @@ function handleLogin() {
         if ($hashed_password) {
             if (password_verify($mot_de_passe, $hashed_password)) {
                 session_start();
-                $_SESSION['user_id'] = $user_id;  // Ajout de l'ID utilisateur dans la session
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['email'] = $email;
                 $_SESSION['nom'] = $nom;
                 $_SESSION['prenom'] = $prenom;

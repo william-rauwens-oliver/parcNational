@@ -14,8 +14,8 @@ class SentierModel {
     }
 
     public function addVisiteur($id_utilisateur, $abonnement, $carte_membre) {
-        $date_abonnement = date('Y-m-d'); // Date actuelle
-        $date_expiration_abonnement = date('Y-m-d', strtotime('+1 year')); // Expiration après un an
+        $date_abonnement = date('Y-m-d');
+        $date_expiration_abonnement = date('Y-m-d', strtotime('+1 year'));
 
         $sql = "INSERT INTO Visiteur (id_utilisateur, abonnement, carte_membre, date_abonnement, date_expiration_abonnement) 
                 VALUES (?, ?, ?, ?, ?)";

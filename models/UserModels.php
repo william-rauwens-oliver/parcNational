@@ -2,7 +2,7 @@
 function connectToDatabase() {
     require './config/database.php';
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($host, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Échec de la connexion à la base de données: " . $conn->connect_error);
@@ -32,7 +32,7 @@ function registerUser($conn, $nom, $prenom, $email, $hashed_password) {
     $stmt->bind_param("sssss", $nom, $prenom, $email, $hashed_password, $role);
 
     if ($stmt->execute()) {
-        return $conn->insert_id;  // Retourne l'ID utilisateur créé
+        return $conn->insert_id;
     } else {
         echo "Erreur lors de l'exécution de la requête: " . $stmt->error;
         return false;

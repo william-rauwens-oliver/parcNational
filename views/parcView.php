@@ -72,7 +72,6 @@ if (isset($camping_id)) {
 }
 $reserved_dates_json = json_encode($reserved_dates);
 
-// Fermer la connexion
 $conn->close();
 ?>
 
@@ -121,7 +120,6 @@ $conn->close();
         </a>
 
         <?php if ($prenom): ?>
-          <!-- Si l'utilisateur est connecté, affichez son prénom -->
           <div class="dropdown">
             <span class="nav__user-name"><?php echo htmlspecialchars($prenom); ?></span>
             <div class="dropdown-content">
@@ -130,7 +128,6 @@ $conn->close();
             </div>
           </div>
         <?php else: ?>
-          <!-- Si l'utilisateur n'est pas connecté, affichez l'icône de connexion -->
           <a href="SignIn.php" class="nav__icon">
             <i class="ri-user-line"></i>
           </a>
@@ -225,8 +222,6 @@ $conn->close();
 </section>
 
 
-
-
 <!-- Section Campings -->
 <section class="section__container destination__container" id="Campings">
   <h2 class="section__header">Nos campings</h2>
@@ -236,7 +231,6 @@ $conn->close();
       <?php foreach ($campings as $camping): ?>
         <div class="destination__card">
           <?php 
-            // Récupération de l'URL de l'image
             $image_path = htmlspecialchars($camping['Image']); 
             $camping_name = htmlspecialchars($camping['nom_camping']); 
           ?>
@@ -265,21 +259,17 @@ if ($conn->connect_error) {
     die("Connexion échouée : " . $conn->connect_error);
 }
 
-// Initialiser une variable pour le message
 $message = '';
 
 if (isset($_POST['submit'])) {
-    // Récupérer les données du formulaire
     $camping_id = $_POST['camping'];
     $date_debut = $_POST['date_debut'];
     $date_fin = $_POST['date_fin'];
     $nombre_personnes = $_POST['nombre_personnes'];
 
-    // Récupérer l'ID de l'utilisateur à partir de la session
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
     if ($user_id) {
-        // Vérifier si une réservation existe déjà pour ce camping aux dates spécifiées
         $check_sql = "SELECT date_debut, date_fin FROM reservation_camping 
                       WHERE id_camping = '$camping_id' 
                       AND (
@@ -289,10 +279,8 @@ if (isset($_POST['submit'])) {
         $check_result = $conn->query($check_sql);
         
         if ($check_result->num_rows > 0) {
-            // Si une réservation existe pour ces dates, afficher un message d'erreur
             $message = "Une réservation existe déjà pour ce camping aux dates spécifiées. Veuillez choisir d'autres dates.";
         } else {
-            // Insérer la nouvelle réservation dans la base de données
             $insert_sql = "INSERT INTO reservation_camping (date_debut, date_fin, nombre_personnes, statut, id_utilisateur, id_camping) 
                            VALUES ('$date_debut', '$date_fin', '$nombre_personnes', 'confirmée', '$user_id', '$camping_id')";
 

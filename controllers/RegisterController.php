@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 include_once __DIR__ . '/../models/UserModels.php';
 
 function handleRegistration() {
-    session_start();  // Démarrage de la session
+    session_start(); 
     $conn = connectToDatabase();
     $error_message = '';
 
@@ -29,7 +29,7 @@ function handleRegistration() {
             $user_id = registerUser($conn, $nom, $prenom, $email, $hashed_password);
 
             if ($user_id) {
-                $_SESSION['user_id'] = $user_id;  // Ajout de l'ID utilisateur dans la session
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['prenom'] = $prenom;
                 $_SESSION['nom'] = $nom;
                 $_SESSION['email'] = $email;
